@@ -1,0 +1,213 @@
+@charset "utf-8";
+
+:root {
+  --stage-w: 1920px;
+  --stage-h: 1080px;
+
+  --grad: linear-gradient(90deg, #6a7bff 0%, #a855f7 30%, #e94f9d 65%, #ff9a5c 100%);
+  --grad-border: linear-gradient(135deg, rgba(168, 85, 247, .75), rgba(233, 79, 157, .55) 50%, rgba(61, 220, 151, .5));
+
+  --bg: #050409;
+  --bg-soft: #1b2138;
+  --stage-bg: #0b0a12;
+  --text: #e8ecf5;
+  --text-soft: #9aa5c0;
+  --border: #2c3452;
+  --accent: #b45cf7;
+  --accent-soft: rgba(168, 85, 247, .16);
+  --link: #8ab6ff;
+
+  --nav-bg: #0e1322;
+  --nav-text: #c9d2e6;
+  --nav-active: #c05cf7;
+
+  --card-bg: #1a2138;
+  --code-bg: #212844;
+  
+  --purple: #a06bfa;
+  --cyan: #46c8f0;
+
+  --info-bg: #16233a; --info-border: #4a90e2;
+  --tip-bg: #251b3a;  --tip-border: #b45cf7;
+  --warn-bg: #2e1822; --warn-border: #e94f76;
+  --ok-bg: #142621;   --ok-border: #3ddc97;
+
+  --shadow: 0 2px 8px rgba(0, 0, 0, .35);
+  --ease: cubic-bezier(.65, 0, .35, 1);
+}
+
+* {box-sizing: border-box;}
+html {scroll-behavior: smooth;}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* background: var(--bg); */
+  background: #000;
+  color: var(--text);
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  overscroll-behavior: none;
+}
+
+/* =====================================================
+  STAGE: 항상 1920*1080 비율 / JS가 뷰포트에 맞춰
+  scale()만 적용 --> 창 크기가 줄어도 레이아웃 그대로 축소
+========================================================*/
+#stage {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ width: var(--stage-w);
+ height: var(--stage-h);
+ transform-origin: center center;
+ transform: translate(-50%, -50%) scale(1); /* js가 scale 값만 갱신 */
+ will-change: transform;
+ background: var(--bg);
+ box-shadow: var(--shadow);
+}
+
+/* 스케일 계산전 깜박임 방지(FOUC) */
+#stage.is-ready {visibility: visible;}
+#stage:not(.is-ready) {visibility: hidden;}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.nav {
+  width: 100%;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 0 56px;
+  font-size: 14px;
+  /* box-shadow: inset 0 0 20px #fff; */
+}
+.nav .logo {
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--text);
+}
+.nav .nav-menu {display: flex; gap: 28px;}
+.nav .nav-menu li {cursor: pointer; transition: color .2s var(--ease);}
+.nav .nav-menu li:hover,
+.nav .nav-menu li.active {color: var(--nav-active);}
+
+main.content {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  /* box-shadow: inset 0 0 20px #fff; */
+}
+
+/* =====================================================
+  slide 한 화면씩 / 마우스 휠에 따라 페이지 전환  
+========================================================*/
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  /* background: var(--bg); */
+  background: var(--stage-bg);
+  color: var(--text);  
+  -webkit-font-smoothing: antialiased;  /* chrome, safari */
+  -moz-osx-font-smoothing: grayscale;   /* firefox */
+}
+.slide.active,
+.slide.visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+.slide .pad {
+  width: 100%;
+  height: 100%;
+  padding: 48px 56px 80px;
+}
+
+/* 진입 애니메이션 */
+.move_in {
+  animation: move_in .6s var(--ease) forwards;
+  -webkit-animation: move_in .6s var(--ease) forwards;
+}
+@keyframes move_in {
+  0%   { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.move_out {
+  animation: move_out .4s var(--ease) forwards;
+}
+@keyframes move_out {
+  0%   { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
+}
+/* =====================================================
+  페이지 인디케이터 (우측 도트 + 좌측 하단 페이지 번호)
+========================================================*/
+.progress {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 50;
+}
+.progress button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  padding: 0;
+  transition: background .25s var(--ease), transform .25s var(--ease);
+}
+.progress button.active {
+  background: var(--grad);
+  transform: scale(1.35);
+}
+
+.page-count {
+  position: absolute;
+  left: 56px;
+  bottom: 28px;
+  font-size: 14px;
+  color: var(--text-soft);
+  letter-spacing: .04em;
+  z-index: 50;
+}
+.page-count strong { color: var(--text); }
+
+.pointNone { pointer-events: none !important; }
+.hidden { display: none !important; }
+.zIndex { z-index: 100 !important; }
+.opacity { opacity: 0 !important; }
+
+/* 스케일 방식이므로 breakpoint별 레이아웃 재배치는 불필요.
+   다만 아주 좁은 화면(세로가 긴 모바일)에서 상하 여백이
+   과하게 남는 경우를 대비한 안전장치만 남겨둔다. */
+@media (max-width: 480px) {
+  .progress { right: 16px; gap: 10px; }
+  .page-count { left: 24px; bottom: 16px; font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .move_in, .move_out { animation: none !important; }
+  html { scroll-behavior: auto; }
+}
