@@ -90,7 +90,7 @@
                                     <img src="./images/work/03_mirae.svg" alt="미래엔 로고">
                                 </div>
                             </article>
-                            <article class="work-card">
+                            <!-- <article class="work-card">
                                 <span class="work-tag">Design System</span>
                                 <h3>프로젝트 <span class="num">C</span></h3>
                                 <p>사내 컴포넌트 라이브러리 및 토큰 시스템 구축</p>
@@ -98,13 +98,20 @@
                                     <span>비상</span>
                                     <img src="./images/work/04_visang.svg" alt="비상 로고">
                                 </div>
-                            </article>
+                            </article> -->
                         </div>
 
                         <!-- 260827 :: 진행 프로젝트 추가 -->
-                        <div class="popArea">
+                        <div class="popArea hidden">
                             <ul class="popList">
-                                <li><img src="./images/01_chunjae/5-2/5-2-1-01.png" alt=""></li>
+                                <li><img src="./images/testImg/1.png" alt=""></li>
+                                <li><img src="./images/testImg/2.png" alt=""></li>
+                                <li><img src="./images/testImg/3.png" alt=""></li>
+                                <li><img src="./images/testImg/4.png" alt=""></li>
+                                <li><img src="./images/testImg/5.png" alt=""></li>
+                                <li><img src="./images/testImg/6.png" alt=""></li>
+
+                                <!-- <li><img src="./images/01_chunjae/5-2/5-2-1-01.png" alt=""></li> -->
                                 <!-- <li><img src="./images/01_chunjae/5-2/5-2-1-02.png" alt=""></li>
                                 <li><img src="./images/01_chunjae/5-2/5-2-1-03.png" alt=""></li>
                                 <li><img src="./images/01_chunjae/5-2/5-2-1-04.png" alt=""></li>
@@ -121,12 +128,21 @@
                                 <li><img src="./images/01_chunjae/6-2/6-3-6.png" alt=""></li>
                                 <li><img src="./images/01_chunjae/6-2/6-3-7.png" alt=""></li> -->
                             </ul>
-                            <ul class="popList hidden"></ul>
-                            <ul class="popList hidden"></ul>
+                            <ul class="popList hidden">
+                                <li><img src="./images/testImg/2_1.png" alt=""></li>
+                                <li><img src="./images/testImg/2_2.png" alt=""></li>
+                                <li><img src="./images/testImg/2_3.png" alt=""></li>
+                            </ul>
+                            <ul class="popList hidden">
+                                <li><img src="./images/testImg/3_1.png" alt=""></li>
+                                <li><img src="./images/testImg/3_2.png" alt=""></li>
+                                <li><img src="./images/testImg/3_3.png" alt=""></li>
+                            </ul>
+                            <!-- <ul class="popList hidden"></ul> -->
                             
-                            <button class="closeBtn"><img src="./images/closeBtnWhite.png" alt=""></button>
-                            <div id="prevBtn"><img src="./images/prevBtn.png" alt=""></div>
-                            <div id="nextBtn"><img src="./images/nextBtn.png" alt=""></div>
+                            <div class="closeBtn"><img src="./images/closeBtnWhite.png" alt=""></div>
+                            <button id="prevBtn"><img src="./images/prevBtn.png" alt=""></button>
+                            <button id="nextBtn"><img src="./images/nextBtn.png" alt=""></button>
                         </div> 
                     </div>
                 </section>
@@ -147,12 +163,13 @@
 
             </main>
 
-            <div class="progress" aria-hidden="hidden"></div>
+            <div class="progress"></div>
             <div class="page-count"><strong class="current">1</strong> / 4</div>
         </div>
     </div>
 
     <script src="./common/common.js"></script>
+    
     <script>
         // 상단 메뉴 클릭시 해당 슬라이드로 이동
         document.addEventListener("DOMContentLoaded", () => {

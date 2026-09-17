@@ -161,10 +161,31 @@
   left: 0;
   top: 0;
   background: rgba(0,0,0,0.6);
+  overflow: hidden;
 }
-.popArea .popList {position: absolute;}
-.popArea .popList li{}
+.popArea .popList {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  /* 첫 번째 li의 절반 크기만큼 왼쪽으로 밀어주어야 
+     currentIdx가 0일 때 정확히 화면 정중앙에 위치하게 됩니다. */
+  transform: translateX(-415px); /* 830px(li 너비)의 절반인 -415px로 고정 기준점 설정 */
+  transition: transform 0.4s ease-in-out;
+}
 
+.popArea .popList li{
+  width: 830px;
+  height: 520px;
+  opacity: 0.4;
+  flex-shrink: 0;
+
+}
+.popArea .popList li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.popArea .popList li.on {opacity: 1;}
 
 
 
@@ -190,14 +211,12 @@
   top: 50%;
   transform: translateY(-50%);
   box-shadow: inset 0 0 20px #fff;
+  z-index: 100 !important;
 }
 .popArea #prevBtn img,
-.popArea #nextBtn img {width: 100px;}
+.popArea #nextBtn img {width: 100px;pointer-events: none;}
 .popArea #prevBtn {left: 40px;}
 .popArea #nextBtn {right: 40px;}
-
-
-
 
 
 
