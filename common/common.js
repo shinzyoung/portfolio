@@ -153,19 +153,15 @@ function initWorkPopup() {
     let currentIdx = 0;
     let activeList = null;
 
-
     if (!popArea || workCards.length === 0) return;
 
     // 1. work-card 클릭 이벤트
     workCards.forEach((card, index) => {
         card.addEventListener('click', () => {
-            
             dotsWrap.classList.add('hidden'); //progress 영역 숨김
-            // popArea의 hidden 제거 (팝업 열기)
             popArea.classList.remove('hidden');
             currentIdx = 0; // 팝업열릴때 첫번째 li로 초기화
 
-            // 모든 popList에 hidden을 추가해서 숨기고, 클릭한 순서의 리스트만 hidden 제거
             popLists.forEach((list, listIndex) => {
                 if (listIndex === index) {
                     list.classList.remove('hidden');
@@ -178,7 +174,6 @@ function initWorkPopup() {
         });
     });
 
-    
     // 2. 닫기(closeBtn) 버튼 클릭 이벤트
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
@@ -201,15 +196,12 @@ function initWorkPopup() {
         });
 
         const slideWidth = 830;
-        // CSS에서 기준점을 -415px로 잡았으므로, 
-        // 이동할 때는 -415px에서 시작하여 index에 따라 -slideWidth 만큼씩 더 이동시킵니다.
         activeList.style.transform = `translateX(${-415 - (currentIdx * slideWidth)}px)`;
     };
 
     // 4. 버튼 순서 이벤트 연결
     slideBtns.forEach((btn, i) => {
         btn.addEventListener('click', () => {
-            // i가 0이면 prve, i가 1이면 next버튼으로 설정
             if(i == 0) {
                 slideFn('prev');
             } else if(i == 1) {
@@ -218,7 +210,7 @@ function initWorkPopup() {
         });
     });
 
-    // 5. 팝업창 슬라이드 이동 함수(switch문 활동)
+    // 5. 팝업창 슬라이드 이동 함수
     const slideFn = (actionType) => {
         if(!activeList) return;
         const items = activeList.querySelectorAll('li');
@@ -227,22 +219,35 @@ function initWorkPopup() {
         switch (actionType) {
             case "prev":
                 currentIdx = (currentIdx > 0) ? currentIdx - 1 : 0;
-                console.log("이전 슬라이드:", currentIdx);
                 break;
             case "next":
                 currentIdx = (currentIdx < totalItems - 1 ) ? currentIdx + 1 : 0;
-                console.log("다음 슬라이드: ", currentIdx);
                 break;
             default:
                 break;
         }
         updateSlide();
-    
     }
-    
 }
 
+/* =====================================================
+ * 4. 이벤트 카드 팝업 제어 (새로 맞춘 부분)
+========================================================*/
+function openEventPopup() {
+    const modal = document.getElementById('eventPopupModal');
+    if (modal) {
+        modal.classList.remove('hidden'); // hidden 클래스를 제거해서 팝업 노출
+    }
+}
 
+function closeEventPopup() {
+    const modal = document.getElementById('eventPopupModal');
+    if (modal) {
+        modal.classList.add('hidden'); // hidden 클래스를 다시 추가해서 팝업 숨김
+    }
+}
+
+// DOM 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
   const stage = document.getElementById('stage');
   const content = document.querySelector('main.content');
@@ -250,4 +255,3 @@ document.addEventListener('DOMContentLoaded', () => {
   if (content) window.slideNav = initSlideNav(content);
   initWorkPopup(); // 팝업 기능 실행
 });
-

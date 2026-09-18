@@ -7,7 +7,7 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="./common/reset.css">
     <link rel="stylesheet" href="./common/common.css">
-    <link rel="stylesheet" href="./page.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -62,46 +62,45 @@
                     <div class="pad work">
                         <p class="eyebrow">WORK</p>
                         <h2 class="section-title">주요 <span class="accent">프로젝트</span></h2>
+                        
                         <div class="work-grid">
+                            
                             <article class="work-card">
                                 <span class="work-tag">Web App</span>
                                 <h3>프로젝트 <span class="num">A</span></h3>
-                                <p>실시간 협업 대시보드 UI/UX 설계 및 구현</p>
+                                <!-- <p>실시간 협업 대시보드 UI/UX 설계 및 구현</p> -->
+                                <p>천재교과서 밀크T의 핵심 학습 콘텐츠 페이지 개발 / 사용자 참여를 높이는 인터렉티브 UI 구현과 에듀테크 서비스 운영 경험</p>
                                 <div>
                                     <span>천재교과서</span>
                                     <img src="./images/work/01_chunjae.png" alt="천재교과서 로고">
                                 </div>
                             </article>
+
                             <article class="work-card">
                                 <span class="work-tag">Landing</span>
                                 <h3>프로젝트 <span class="num">B</span></h3>
-                                <p>브랜드 런칭 랜딩 페이지, 스크롤 인터랙션 디자인</p>
+                                <!-- <p>브랜드 런칭 랜딩 페이지, 스크롤 인터랙션 디자인</p> -->
+                                <p>아이스크림, 미래엔, 비상 등 주요 교육 기업의 디지털 교과서 및 웹콘텐츠 개발 / 다양한 브랜드 가이드를 준수하며 학습 효율을 높이는 퍼블리싱 및 UI 구현 수행</p>
                                 <div>
-                                    <span>아이스크림</span>
+                                    <span>아이스크림/미래엔/비상</span>
                                     <img src="./images/work/02_iscream.png" alt="아이스크림 로고">
                                 </div>
                             </article>
-                            <article class="work-card">
-                                <span class="work-tag">Design System</span>
-                                <h3>프로젝트 <span class="num">C</span></h3>
-                                <p>사내 컴포넌트 라이브러리 및 토큰 시스템 구축</p>
-                                <div>
-                                    <span>미래엔</span>
-                                    <img src="./images/work/03_mirae.svg" alt="미래엔 로고">
-                                </div>
+
+                            <!-- 세 번째 Work-Card: 이벤트 페이지 프로젝트 -->
+                            <article class="event-card" onclick="openEventPopup()">
+                                <span class="work-thumb">
+                                    <img src="./images/event/pc_main_popup-20260803_1.png" alt="이벤트 페이지 썸네일">
+                                </span>
+                                <div class="card-content">
+                                    <h3>이벤트 프로모션 페이지 제작</h3>
+                                    <p>프로모션 웹페이지 개발 / 반응형 레이아웃 구현</p>
+                                </div>                                
                             </article>
-                            <!-- <article class="work-card">
-                                <span class="work-tag">Design System</span>
-                                <h3>프로젝트 <span class="num">C</span></h3>
-                                <p>사내 컴포넌트 라이브러리 및 토큰 시스템 구축</p>
-                                <div>
-                                    <span>비상</span>
-                                    <img src="./images/work/04_visang.svg" alt="비상 로고">
-                                </div>
-                            </article> -->
+
                         </div>
 
-                        <!-- 260827 :: 진행 프로젝트 추가 -->
+                        <!-- 260827 :: 진행 프로젝트 추가 / 슬라이드 페이지 구현방식 -->
                         <div class="popArea hidden">
                             <ul class="popList">
                                 <li><img src="./images/testImg/1.png" alt=""></li>
@@ -110,41 +109,41 @@
                                 <li><img src="./images/testImg/4.png" alt=""></li>
                                 <li><img src="./images/testImg/5.png" alt=""></li>
                                 <li><img src="./images/testImg/6.png" alt=""></li>
-
-                                <!-- <li><img src="./images/01_chunjae/5-2/5-2-1-01.png" alt=""></li> -->
-                                <!-- <li><img src="./images/01_chunjae/5-2/5-2-1-02.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/5-2/5-2-1-03.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/5-2/5-2-1-04.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/5-2/5-2-1-05.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-2-1_01.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-2-1_02.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-2-1_03.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-2-1_04.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-3-1.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-3-2.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-3-3.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-3-4.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-3-5.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-3-6.png" alt=""></li>
-                                <li><img src="./images/01_chunjae/6-2/6-3-7.png" alt=""></li> -->
                             </ul>
                             <ul class="popList hidden">
                                 <li><img src="./images/testImg/2_1.png" alt=""></li>
                                 <li><img src="./images/testImg/2_2.png" alt=""></li>
                                 <li><img src="./images/testImg/2_3.png" alt=""></li>
-                            </ul>
-                            <ul class="popList hidden">
                                 <li><img src="./images/testImg/3_1.png" alt=""></li>
                                 <li><img src="./images/testImg/3_2.png" alt=""></li>
                                 <li><img src="./images/testImg/3_3.png" alt=""></li>
                             </ul>
-                            <!-- <ul class="popList hidden"></ul> -->
+                            <!-- <ul>추가 프로젝트는 popList 만들기</ul> -->
                             
                             <div class="closeBtn"><img src="./images/closeBtnWhite.png" alt=""></div>
                             <button id="prevBtn"><img src="./images/prevBtn.png" alt=""></button>
                             <button id="nextBtn"><img src="./images/nextBtn.png" alt=""></button>
                         </div> 
+
+                        <!-- 이벤트 팝업(모달) 레이아웃 - 반응형 구현페이지 이동 -->
+                        <div id="eventPopupModal" class="popup-overlay hidden">
+                            <div class="popup-content">
+                                <div class="popup-banner-area">
+                                    <div class="banner-box">
+                                        <h3>학교 자율 시간 완벽 대비!</h3>
+                                        <p>우리 반 인정교과서를 찾아라</p>
+                                        <a href="event.html" class="event-go-btn">이벤트 바로가기</a>
+                                    </div>
+                                </div>
+
+                                <div class="popup-footer">
+                                    <button type="button" class="close-btn" onclick="closeEventPopup()">닫기</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
                 </section>
 
                 <section class="slide" data-index="3">
