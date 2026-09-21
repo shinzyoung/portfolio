@@ -1,29 +1,12 @@
-/* 기본 스타일 (모바일 기준 또는 공통) */
-.event-wrap {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    /* padding: 20px; */
-}
-
-/* 태블릿 이상 (768px 이상) */
-@media screen and (min-width: 768px) {
-    .event-wrap {
-        /* padding: 40px; */
-    }
-}
-
-/* PC 화면 이상 (1024px 이상) */
-@media screen and (min-width: 1024px) {
-    /* PC 전용 가로 배치 레이아웃 등 작성 */
-}
+/* 기본 스타일 (공통) */
 
 body {
     margin: 0;
     padding: 0;
     width: 100%;
     background: #f0f0f0; 
-    overflow-y: auto;}
+    overflow-y: auto;
+}
 .event-wrap {
     position: relative;
     width: 100%;
@@ -38,7 +21,8 @@ body {
     flex-direction: column;
 }
 [class^="content0"] {
-    width: 100%;
+    position: relative;
+    width: 100%;    
 }
 [class^="content0"] > img {
     width: 100%;
@@ -46,10 +30,8 @@ body {
     display: block;
     margin: 0 auto;
 }
-/* 비디오 플레이 */
-.content01 {
-    position: relative;
-}
+
+/* content01 영역  :: video 플레이 영역 */
 video {
     position: absolute;
     top: 40%;
@@ -62,10 +44,7 @@ video {
     /* box-shadow: inset 0 0 5px red; */
 }
 
-/* 포폴리스트(이벤트리스트) */
-.content02 {
-    position: relative;
-}
+/* content02 영역 */
 .eventWrap {
     position: absolute;
     top: 28%;
@@ -73,7 +52,6 @@ video {
     transform: translateX(-50%);    
     display: flex;
     flex-direction: column;
-    /* gap: 0.5em; */
     gap: 3em;
     width: 66%;
     height: auto;
@@ -87,16 +65,56 @@ video {
     /* box-shadow: inset 0 0 5px red; */
 }
 .content02 .eventList > li {
-    /* width: 20%; */
     width: calc(20% - 16px);
+}
+.content02 .eventList > li:hover {
+    transform: scale(1.1);
+    transition: transform .4s ease-in-out;
 }
 .content02 .eventList > li >img {
     width: 100%;
     height: auto;
+    pointer-events: none;
+}
+
+/* content03 영역 */
+.content03 {
+    width: 100%;
+}
+.content03 .noteContainer {
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 9.5%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+}
+.content03 .noteContainer .textArea {
+    width: 85%;
+    height: 100%;    
+    outline: none;
+    background: transparent;
+    resize: none;
+    font-size: clamp(14px, 2.5vw, 28px);
+    padding: 0.4em 0.5em;
+    line-height: 1.2;
+    color: var(--stage-bg);
+    overflow: hidden;
+    box-shadow: inset 0 0 5px red;
+}
+.submitBtn {
+    width: 14%;
+    height: 100%;
+    box-shadow: inset 0 0 5px red;
 }
 
 
 
+/* 미디어 쿼리 */
 @media screen and (max-width:925px) {
     .eventWrap {
         width: 65%;
@@ -109,6 +127,7 @@ video {
     .content02 .eventList > li {
         width: calc(31% - 14px);
     }
+ 
 }
 
 @media screen and (max-width: 768px) {

@@ -247,6 +247,21 @@
     padding: 40px;
     text-align: center;
     background: #f9fbfd;
+    color: var(--card-bg);
+}
+.banner-box {
+  padding: 2em;
+  border-radius: 1.5em;
+  background: #B2E3E2;
+  background: linear-gradient(90deg,rgba(178, 227, 226, 1) 0%, rgba(228, 247, 235, 1) 50%, rgba(179, 232, 214, 1) 100%);
+   color: var(--card-bg);
+}
+.banner-box > p {
+  font-size: 28px;
+  color: var(--event-text);
+}
+.banner-box > a:hover {
+  color: #9aa5c0;
 }
 
 .event-go-btn {
