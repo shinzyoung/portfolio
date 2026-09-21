@@ -1,6 +1,11 @@
 "use strict";
 
-function openEventPage() {
-    // 새 창으로 지정한 URL 열기
-    window.open('', '_blank');
-}
+const vdo = document.querySelector('#vdo');
+
+vdo.addEventListener('click', function() {
+    if(vdo.paused) {
+        vdo.play();
+    } else {
+        vdo.pause();
+    }
+});
