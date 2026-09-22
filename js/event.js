@@ -1,6 +1,16 @@
 "use strict";
 
 onload = async () => {
+    
+
+    /* =====================================================
+    * * 우클릭 방지 / 사용자 제한 / 개발자도구 / 소스보기 / 검사도구 방지
+    * @param {*} idx {0:적용, 1:미적용} 
+    ========================================================*/
+    // 작업완료 후 주석 해제하기
+    // blockListenerUtil(0); //설정{0:적용, 1:미적용}
+
+
     const $ = function(sel){return document.querySelector(sel)};
     const $$ = function(sel){return document.querySelectorAll(sel)};
 

@@ -92,14 +92,16 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
 }
-.work-card {
+.work-card,
+.event-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 36px 32px;
   transition: transform .3s var(--ease), border-color .3s var(--ease);
 }
-.work-card:hover {
+.work-card:hover,
+.event-card:hover {
   transform: translateY(-6px);
   border-color: var(--accent);
 }
@@ -149,6 +151,7 @@
   opacity: 1;
   filter: grayscale(0) brightness(1);
 }
+.work-thumb > img {width: 65%;}
 
 /* 260827 :: popup창 슬라이드 형식*/
 .popArea {
@@ -171,6 +174,11 @@
      currentIdx가 0일 때 정확히 화면 정중앙에 위치하게 됩니다. */
   transform: translateX(-415px); /* 830px(li 너비)의 절반인 -415px로 고정 기준점 설정 */
   transition: transform 0.4s ease-in-out;
+  background: #000;
+}
+
+.popArea ul.popList:nth-child(2) li {
+  height: 470px;
 }
 
 .popArea .popList li{
@@ -199,7 +207,7 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
-  box-shadow: inset 0 0 10px #fff;
+  /* box-shadow: inset 0 0 10px #fff; */
 }
 .popArea .closeBtn > img {
   width: 100%;
@@ -210,8 +218,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  box-shadow: inset 0 0 20px #fff;
   z-index: 100 !important;
+  /* box-shadow: inset 0 0 20px #fff; */
 }
 .popArea #prevBtn img,
 .popArea #nextBtn img {width: 100px;pointer-events: none;}

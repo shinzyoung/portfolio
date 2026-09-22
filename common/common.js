@@ -260,6 +260,80 @@ function closeEventPopup() {
 }
 
 
+/* =====================================================
+* * 우클릭 방지 / 사용자 제한 / 개발자도구 / 소스보기 / 검사도구 방지
+* @param {*} idx {0:적용, 1:미적용} 
+========================================================*/
+let blockListenerUtil = function(idx) {
+    if (idx === 1) return;
+
+    // 1. 우클릭(컨텍스트 메뉴) 금지
+    function blockMenu(e) {
+        e = e || window.event;
+
+        if (e.preventDefault) {
+            e.preventDefault();
+            alert('해당 작업물은 저작권 내부 보안으로 인해 우클릭이 제한되어 있습니다.')
+        } else {
+            e.returnValue = false;
+        }
+        return false;
+    }
+
+    // 최신 브라우저
+    if (document.addEventListener) {
+        document.addEventListener("contextmenu", blockMenu, false);
+    }
+    // 구형 IE
+    else {
+        document.attachEvent("oncontextmenu", blockMenu);
+    }
+
+    // 2. 드래그 및 텍스트 선택 방지
+    function blockDrag(e) {
+        e = e || window.event;
+
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
+        return false;
+    }
+
+    if (document.addEventListener) {
+        document.addEventListener("dragstart", blockDrag, false); // 이미지,텍스트 드래그 시작 차단
+        document.addEventListener("selectstart", blockDrag, false); // 텍스트 선택 시작 차단
+    } else {
+        document.attachEvent("ondragstart", blockDrag);
+        document.attachEvent("onselectstart", blockDrag);
+    }
+
+    // 3. 일부 단축키 차단 - 개발자도구 / 소스보기 / 검사도구 대응
+    document.onkeydown = function (e) {
+        e = e || window.event;
+        var key = e.keyCode || e.which;
+
+        // F12 : 개발자도구
+        if (key == 123) {
+            return false;
+        }
+
+        // Ctrl + U : 페이지 소스 보기
+        if (e.ctrlKey && key == 85) {
+            return false;
+        }
+
+        // Ctrl + Shift + I : 개발자도구
+        // Ctrl + Shift + J : 콘솔
+        // Ctrl + Shift + C : 요소 검사
+        if (e.ctrlKey && e.shiftKey && (key == 73 || key == 74 || key == 67)) {
+            return false;
+        }
+    };
+};
+
+
 
 
 // DOM 로드 시 실행
