@@ -32,17 +32,6 @@ body {
 }
 
 /* content01 영역  :: video 플레이 영역 */
-video {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%); 
-    width: 50%;
-    max-width: 500px;
-    height: auto;
-    margin: 0 auto;
-    /* box-shadow: inset 0 0 5px red; */
-}
 
 /* content02 영역 */
 .eventWrap {
@@ -90,11 +79,11 @@ video {
     height: 9.5%;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 6px;
 
 }
 .content03 .noteContainer .textArea {
-    width: 85%;
+    width: 93%;
     height: 100%;    
     outline: none;
     background: transparent;
@@ -104,13 +93,134 @@ video {
     line-height: 1.2;
     color: var(--stage-bg);
     overflow: hidden;
-    box-shadow: inset 0 0 5px red;
+    /* box-shadow: inset 0 0 5px red; */
 }
 .submitBtn {
     width: 14%;
     height: 100%;
-    box-shadow: inset 0 0 5px red;
+    /* box-shadow: inset 0 0 5px red; */
 }
+/* 이벤트 팝업 */
+.content03 .popupBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:100;
+}
+.content03 .popupBox {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.content03 h3 {
+    margin-bottom: 10px;
+    color:var(--stage-bg);
+    font-size: 1rem;
+}
+.content03 .popupBox .userText {
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color:#555;
+    word-break: break-all;
+    min-height: 40px;
+    font-size: 0.95rem;
+    border: 1px solid #eee;
+    box-shadow: 1px 1px 3px #ddd;
+}
+.content03 .popupBox .closeBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: #333;
+    color:#fff;
+}
+.content03 .popupBox .closeBtn:hover {
+    background: #555;
+}
+
+/* **************************************************** */
+/*                플레이어 커스텀 영역                   */
+/* **************************************************** */
+/* 1. 비디오 래퍼를 기존에 비디오가 있던 위치(content01 기준)로 보냄 */
+.custom-video-container {
+    position: absolute;
+    top: 41%;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 50%;
+    max-width: 500px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 10; /* 이미지가 위를 덮지 않도록 레이어 조정이 필요할 수 있음 */
+}
+
+/* 2. 실제 비디오 태그는 래퍼 크기에 꽉 차게 설정 */
+.custom-video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 3. 하단 커스텀 컨트롤러 바 스타일 (이전 답변과 동일) */
+.custom-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0 ;
+    transition: opacity 0.3s ease;
+}
+
+.custom-video-container:hover .custom-controls {
+    opacity: 1;
+}
+
+.custom-controls .play-btn {    
+    background: url(../images/event/play01.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    /* box-shadow: inset 0 0 5px red; */
+}
+.custom-controls .play-btn.is-playing {
+    background: url(../images/event/play02.png) no-repeat;
+    background-size: contain;
+}
+.custom-controls .progress-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.custom-controls .progress-bar {
+    width: 0%;
+    height: 100%;
+    /* background: #ff4757; */
+}
+
 
 
 
@@ -126,8 +236,7 @@ video {
     }
     .content02 .eventList > li {
         width: calc(31% - 14px);
-    }
- 
+    } 
 }
 
 @media screen and (max-width: 768px) {
@@ -148,3 +257,28 @@ video {
     }
     .content02 .eventList > li:last-child {display: none;}
 }
+
+@media screen and (max-width: 480px) {
+    .eventWrap {
+        width: 65%;
+        top: 27%;
+        gap: 0.3em;
+    }
+    .content02 .eventList {
+        justify-content: space-evenly;
+        gap: 15px;
+    }
+    .content02 .eventList li:not(:first-child) {
+        display: none;
+    }
+    .content02 .eventList > li {
+        width: calc(42% - 10px); 
+    }
+    .content02 .eventList:nth-child(n+4) {
+        display: inherit;
+    }
+    .content02 .eventList:nth-child(n+7) {
+        display: none;
+    } 
+}
+

@@ -1,6 +1,20 @@
 "use strict";
 
 /* =====================================================
+ * * 터치 이벤트 관련
+========================================================*/
+const isTouch = (() => {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return {
+        mobile: isMobile,
+        down: isMobile ? "touchstart" : "mousedown",
+        move: isMobile ? "touchmove" : "mousemove",
+        up: isMobile ? "touchend" : "mouseup",
+        click: "click"
+    };
+})();
+
+/* =====================================================
  * 1. 반응형 스케일링 1920*1080 뷰포트에 맞춰 scale 적용
  *  --> 창 크기 줄어도 내부 비율 그대로 유지
 ========================================================*/
@@ -107,8 +121,6 @@ function initSlideNav(rootEl) {
         },
         {passive:false}
     );
-
-
 
 
 
@@ -247,6 +259,9 @@ function closeEventPopup() {
     }
 }
 
+
+
+
 // DOM 로드 시 실행
 document.addEventListener('DOMContentLoaded', () => {
   const stage = document.getElementById('stage');
@@ -255,3 +270,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (content) window.slideNav = initSlideNav(content);
   initWorkPopup(); // 팝업 기능 실행
 });
+
