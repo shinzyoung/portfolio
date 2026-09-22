@@ -87,6 +87,9 @@ onload = async () => {
             
         } catch (error) {
             console.error("비디오 자동 재생이 차단되었거나 오류 발생:", error);
+            vdo.pause();
+            playBtn.classList.add('is-playing');
+
         }
     }
     runVideoSequence();
