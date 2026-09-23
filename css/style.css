@@ -164,7 +164,7 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 32px;
-    max-height: 600px;
+    max-height: 640px;
     overflow-y: auto;
 }
 
@@ -201,7 +201,7 @@
 
 .info-title {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 25px;
     color: var(--accent, #6366f1);
     margin-bottom: 4px;
 }
@@ -226,7 +226,7 @@
     background: rgba(255, 255, 255, 0.05);
     padding: 6px 12px;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 20px;
     color: var(--text-soft);
 }
 
@@ -252,7 +252,7 @@
     margin-top: 4px;
     padding-left: 16px;
     list-style-type: disc;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--text-soft);
 }
 
