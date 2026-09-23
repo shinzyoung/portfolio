@@ -66,11 +66,11 @@
     background-clip: text;
     color: transparent;
 }
-.about-grid {
+/* .about-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: flex-start;
 }
 .about-text p { font-size: 20px; color: var(--text-soft); max-width: 640px; }
 .about-stats { display: flex; gap: 48px; }
@@ -83,7 +83,208 @@
   background-clip: text;
   color: transparent;
 }
-.about-stats span { color: var(--text-soft); font-size: 14px; }
+.about-stats span { color: var(--text-soft); font-size: 14px; } */
+
+/* 전체 그리드 레이아웃 조정 (좌우 2단) */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+    max-height: 70vh;
+    min-height: 60vh;
+}
+
+.about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* 통계 아이템 인터랙션 디자인 */
+.about-stats { 
+    display: flex; 
+    gap: 32px; 
+}
+
+.about-stats li { 
+    /* display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease; */
+    cursor: pointer;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+}
+
+/* 첫 번째 스탯 카드(경력)에 마우스 올렸을 때 포인터 및 강조 */
+.about-stats li:first-child {
+    cursor: pointer;
+}
+
+/* 선택되었거나 호버되었을 때 스타일 강조 */
+.about-stats li.active,
+.about-stats li:hover {
+    border-color: var(--accent, #6366f1);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.about-stats li:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent, #6366f1);
+}
+
+.about-stats strong {
+    font-size: 36px;
+    font-weight: 800;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.about-stats span { 
+    color: var(--text-soft); 
+    font-size: 14px; 
+}
+
+/* 오른쪽 상세 정보 패널 영역 */
+.about-right {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 32px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+/* 스크롤바 디자인 (선택사항) */
+.about-right::-webkit-scrollbar {
+    width: 6px;
+}
+.about-right::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+/* 디테일 패널 기본 숨김 처리 및 애니메이션 */
+.detail-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 활성화되었을 때 보여주기 (기본값으로 항상 보게 하려면 아래 JS나 CSS에서 active 유지) */
+.detail-panel.active {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    opacity: 1;
+}
+
+/* 내부 상세 디자인 요소들 */
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent, #6366f1);
+    margin-bottom: 4px;
+}
+
+.edu-list li {
+    font-size: 22px;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.career-timeline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.career-timeline .badge {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-soft);
+}
+
+.career-timeline .badge.current {
+    background: var(--accent, #6366f1);
+    color: #fff;
+    font-weight: 600;
+}
+
+.project-years {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.year-block .year {
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text);
+}
+
+.year-block ul {
+    margin-top: 4px;
+    padding-left: 16px;
+    list-style-type: disc;
+    font-size: 20px;
+    color: var(--text-soft);
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.skill-list li {
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 22px;
+    width: 120px;
+    height: auto;
+
+}
+.skill-list li > span:nth-child(1) img {
+    width: 100%;
+}
+
+
+
+
 
 /* ===== Slide 2: Work ===== */
 .work { height: 100%; display: flex; flex-direction: column; justify-content: center; }

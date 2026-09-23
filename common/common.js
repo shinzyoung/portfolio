@@ -259,6 +259,32 @@ function closeEventPopup() {
     }
 }
 
+/* =====================================================
+ * 5. 
+========================================================*/
+document.addEventListener("DOMContentLoaded", () => {
+    const statItems = document.querySelectorAll(".about-stats li");
+    const detailPanels = document.querySelectorAll(".detail-panel");
+
+    statItems.forEach((item) => {
+        // 클릭할 때 작동 (호버로 바꾸려면 'click'을 'mouseenter'로 변경)
+        item.addEventListener("click", () => {
+            // 1. 모든 통계 버튼에서 active 제거 후 현재 버튼에만 추가
+            statItems.forEach(el => el.classList.remove("active"));
+            item.classList.add("active");
+
+            // 2. 모든 오른쪽 패널 숨기기
+            detailPanels.forEach(panel => panel.classList.remove("active"));
+
+            // 3. data-target에 일치하는 패널만 보여주기
+            const targetId = item.getAttribute("data-target");
+            const targetPanel = document.getElementById(targetId);
+            if (targetPanel) {
+                targetPanel.classList.add("active");
+            }
+        });
+    });
+});
 
 /* =====================================================
 * * 우클릭 방지 / 사용자 제한 / 개발자도구 / 소스보기 / 검사도구 방지
