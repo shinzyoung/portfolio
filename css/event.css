@@ -163,7 +163,7 @@ body {
     transform: translateX(-50%); 
     width: 50%;
     max-width: 500px;
-    background: #000;
+    /* background: #000; */
     border-radius: 12px;
     overflow: hidden;
     z-index: 10; /* 이미지가 위를 덮지 않도록 레이어 조정이 필요할 수 있음 */
