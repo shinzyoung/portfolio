@@ -1,0 +1,632 @@
+@charset "utf-8";
+
+/* =====================================================
+  STAGE: 항상 1920*1080 비율 / JS가 뷰포트에 맞춰
+  scale()만 적용 --> 창 크기가 줄어도 레이아웃 그대로 축소
+========================================================*/
+#stage {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ width: var(--stage-w);
+ height: var(--stage-h);
+ transform-origin: center center;
+ transform: translate(-50%, -50%) scale(1); /* js가 scale 값만 갱신 */
+ will-change: transform;
+ background: var(--bg);
+ box-shadow: var(--shadow);
+}
+
+/* 스케일 계산전 깜박임 방지(FOUC) */
+#stage.is-ready {visibility: visible;}
+#stage:not(.is-ready) {visibility: hidden;}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+#stage .nav {
+  width: 100%;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 0 56px;
+  font-size: 14px;
+  /* box-shadow: inset 0 0 20px #fff; */
+}
+#stage .nav .logo {
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--text);
+}
+#stage .nav .nav-menu {display: flex; gap: 28px;}
+#stage .nav .nav-menu li {cursor: pointer; transition: color .2s var(--ease);}
+#stage .nav .nav-menu li:hover,
+#stage .nav .nav-menu li.active {color: var(--nav-active);}
+
+main.content {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  /* box-shadow: inset 0 0 20px #fff; */
+}
+
+/* =====================================================
+  slide 한 화면씩 / 마우스 휠에 따라 페이지 전환  
+========================================================*/
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  /* background: var(--bg); */
+  background: var(--stage-bg);
+  color: var(--text);  
+  -webkit-font-smoothing: antialiased;  /* chrome, safari */
+  -moz-osx-font-smoothing: grayscale;   /* firefox */
+}
+.slide.active,
+.slide.visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+.slide .pad {
+  width: 100%;
+  height: 100%;
+  padding: 48px 56px 80px;
+}
+
+/* =====================================================
+  페이지 인디케이터 (우측 도트 + 좌측 하단 페이지 번호)
+========================================================*/
+.progress {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 10;
+}
+.progress button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  padding: 0;
+  transition: background .25s var(--ease), transform .25s var(--ease);
+}
+.progress button.active {
+  background: var(--grad);
+  transform: scale(1.35);
+}
+
+.page-count {
+  position: absolute;
+  left: 56px;
+  bottom: 28px;
+  font-size: 14px;
+  color: var(--text-soft);
+  letter-spacing: .04em;
+  z-index: 50;
+}
+.page-count strong { color: var(--text); }
+
+/* =====================================================  
+========================================================*/
+
+.eyebrow {
+    letter-spacing: .12em;
+    color: var(--accent);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.grad-text {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color:transparent;
+}
+
+/* ===== Slide 0: Hero ===== */
+.hero {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.hero-title {
+    font-size: 76px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+.hero-sub {
+    margin-top: 32px;
+    font-size: 20px;
+    color: var(--text-soft);
+}
+.scroll-cue {
+    position: absolute;
+    left: 56px;
+    bottom: 64px;
+    font-size: 14px;
+    color: var(--text-soft);
+    padding-left: 28px;
+}
+.scroll-cue::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: translateY(-70%) rotate(45deg);
+    animation: cue 1.6s ease-in-out infinite;
+}
+@keyframes cue {
+    0%,100% {transform: translateY(-70%) rotate(45deg); opacity: 0.4;}
+    50% {transform: translateY(-30%) rotate(45deg); opacity: 1;}
+}
+
+/* ===== Slide 1: About ===== */
+.about { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.section-title { font-size: 60px; font-weight: 700; margin-bottom: 56px; }
+.section-title .accent {
+    background: linear-gradient(95deg, var(--purple), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* 전체 그리드 레이아웃 조정 (좌우 2단) */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+    max-height: 70vh;
+    min-height: 70vh;
+}
+
+.about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* 통계 아이템 인터랙션 디자인 */
+.about-stats { 
+    display: flex; 
+    gap: 32px; 
+}
+
+.about-stats li { 
+    cursor: pointer;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+}
+
+/* 첫 번째 스탯 카드(경력)에 마우스 올렸을 때 포인터 및 강조 */
+.about-stats li:first-child {
+    cursor: pointer;
+}
+
+/* 선택되었거나 호버되었을 때 스타일 강조 */
+.about-stats li.active,
+.about-stats li:hover {
+    border-color: var(--accent, #6366f1);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.about-stats li:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent, #6366f1);
+}
+
+.about-stats strong {
+    font-size: 40px;
+    font-weight: 800;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.about-stats span { 
+    color: var(--text-soft); 
+    font-size: 20px; 
+}
+
+/* 오른쪽 상세 정보 패널 영역 */
+.about-right {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 32px;
+    max-height: 640px;
+    overflow-y: auto;
+}
+
+/* 스크롤바 디자인 (선택사항) */
+.about-right::-webkit-scrollbar {
+    width: 6px;
+}
+.about-right::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+/* 디테일 패널 기본 숨김 처리 및 애니메이션 */
+.detail-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 활성화되었을 때 보여주기 (기본값으로 항상 보게 하려면 아래 JS나 CSS에서 active 유지) */
+.detail-panel.active {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    opacity: 1;
+}
+
+/* 내부 상세 디자인 요소들 */
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-title {
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--accent, #6366f1);
+    margin-bottom: 4px;
+}
+
+.edu-list li {
+    font-size: 30px;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.career-timeline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.career-timeline .badge {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 20px;
+    color: var(--text-soft);
+}
+
+.career-timeline .badge.current {
+    background: var(--accent, #6366f1);
+    color: #fff;
+    font-weight: 600;
+}
+
+.project-years {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.year-block .year {
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--text);
+}
+
+.year-block ul {
+    margin-top: 4px;
+    padding-left: 16px;
+    list-style-type: disc;
+    font-size: 25px;
+    color: var(--text-soft);
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.skill-list li {
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 22px;
+    width: 120px;
+    height: auto;
+
+}
+.skill-list li > span:nth-child(1) img {
+    width: 100%;
+}
+
+
+/* ===== Slide 2: Work ===== */
+.work { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  min-height: 30%;
+}
+.work-card,
+.event-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  transition: transform .3s var(--ease), border-color .3s var(--ease);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.work-card:hover,
+.event-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+}
+.work-tag {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.work-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+.work-card p { font-size: 20px; color: var(--text-soft); line-height: 1.6; }
+.work-card .num {
+    font-size: 84px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    background: linear-gradient(100deg, var(--purple), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.work-card > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 3px solid var(--border);
+  width: 100%;
+}
+.work-card > div > span {
+  font-size: 25px;
+  font-weight: 500;
+  color:var(--text-soft);
+}
+.work-card > div > img {
+  height: 25px;
+  width: auto;
+  max-width:70px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(2) opacity(0.7);
+  transition: opacity .3s var(--ease), filter .3s var(--ease);
+}
+.work-card:hover > div > img {
+  opacity: 1;
+  filter: grayscale(0) brightness(1);
+}
+.work-thumb > img {width: 65%;}
+
+/* 260827 :: popup창 슬라이드 형식*/
+.popArea {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width: 100%;
+  height: 100%;  
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+.popArea .popList {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  /* 첫 번째 li의 절반 크기만큼 왼쪽으로 밀어주어야 
+     currentIdx가 0일 때 정확히 화면 정중앙에 위치하게 됩니다. */
+  transform: translateX(-415px); /* 830px(li 너비)의 절반인 -415px로 고정 기준점 설정 */
+  transition: transform 0.4s ease-in-out;
+  background: #000;
+}
+
+.popArea ul.popList:nth-child(2) li {
+  height: 470px;
+}
+
+.popArea .popList li{
+  width: 830px;
+  height: 520px;
+  opacity: 0.4;
+  flex-shrink: 0;
+
+}
+.popArea .popList li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.popArea .popList li.on {opacity: 1;}
+
+
+
+
+
+/* popup 버튼영역 */
+.popArea .closeBtn {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  /* box-shadow: inset 0 0 10px #fff; */
+}
+.popArea .closeBtn > img {
+  width: 100%;
+  height: auto;
+}
+.popArea #prevBtn,
+.popArea #nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100 !important;
+  /* box-shadow: inset 0 0 20px #fff; */
+}
+.popArea #prevBtn img,
+.popArea #nextBtn img {width: 100px;pointer-events: none;}
+.popArea #prevBtn {left: 40px;}
+.popArea #nextBtn {right: 40px;}
+
+
+/* 팝업 배경 어둡게 처리 */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 팝업 박스 본체 */
+.popup-content {
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.popup-banner-area {
+    padding: 40px;
+    text-align: center;
+    background: #f9fbfd;
+    color: var(--card-bg);
+}
+.banner-box {
+  padding: 2em;
+  border-radius: 1.5em;
+  background: #B2E3E2;
+  background: linear-gradient(90deg,rgba(178, 227, 226, 1) 0%, rgba(228, 247, 235, 1) 50%, rgba(179, 232, 214, 1) 100%);
+   color: var(--card-bg);
+}
+.banner-box > p {
+  font-size: 28px;
+  color: var(--event-text);
+}
+.banner-box > a:hover {
+  color: #9aa5c0;
+}
+
+.event-go-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #0f2c59;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.popup-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* ===== Slide 3: Contact ===== */
+.contact { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.contact-link {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 8px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
+.contact-social { display: flex; gap: 28px; margin-top: 40px; }
+.contact-social a {
+  font-size: 15px;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.contact-social a:hover { color: var(--text); border-color: var(--accent); }

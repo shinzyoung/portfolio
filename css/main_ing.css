@@ -1,0 +1,167 @@
+@charset "utf-8";
+html, body {
+    height: auto;
+    overflow: auto;
+}
+#wrap {
+    min-width: 450px;
+}
+.inner {
+    width: 90%;
+    max-width: 1140px;
+    margin: 0 auto;
+    /* box-shadow: inset 0 0 5px blue; */
+}
+header{
+    position: relative;
+    z-index: 10;
+    padding: 12px 0;
+    /* box-shadow: inset 0 0 5px #fff; */
+}
+footer {
+    letter-spacing: -.3px;
+    padding: 20px 0;
+    /* box-shadow: inset 0 0 5px #fff; */
+}
+
+/* header 영역 */
+header > .inner {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(95deg, var(--purple), var(--cyan));
+}
+header > .inner .info {
+    
+    /* box-shadow: inset 0 0 5px #000; */
+}
+header > .inner .navMenu {
+    display: flex;
+    justify-content: space-around;
+    /* box-shadow: inset 0 0 5px #000; */
+
+}
+
+
+/* container 영역 */
+.bannerTop {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px #fff;    
+}
+
+/* 슬라이드 공통 스타일: 기본적으로 화면 우측 대기(100%) */
+.bannerTop > .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    
+    opacity: 0;
+    transform: translateX(100%); /* 기본 대기위치: 오른쪽 */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.bannerTop > .slider.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+/* 2. 다음 버튼을 눌러 왼쪽으로 밀려나는 슬라이드 */
+.bannerTop > .slider.slide-left {
+    opacity: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+}
+
+/* 3. 이전 버튼을 눌러 오른쪽으로 밀려나는 슬라이드 */
+.bannerTop > .slider.slide-right {
+    opacity: 0;
+    transform: translateX(100%);
+    z-index: 1;
+}
+.bannerTop[data-dir="prev"] > .slider:not(.active):not(.slide-right) {
+    transform: translateX(-100%);
+}
+
+
+/* 기존 hidden 클래스 무력화 */
+.bannerTop > .slider.hidden {
+    display: flex !important;
+}
+.bannerTop > .slider .bannerImg img {
+    width: 300px;
+}
+
+/* 슬라이드 좌우 버튼 */
+.bannerTop button {
+    position: absolute;
+    width: 28px;
+    height: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url(../images/main_images/sp_cbox.png) no-repeat;
+    opacity: 0.5;
+    z-index: 3;
+}
+.bannerTop button#prevBtn {
+    background-position: -450px -180px;
+    left: 0px;
+}
+.bannerTop button#nextBtn {
+    background-position: -480px -180px;
+    right: 0px;
+}
+.bannerTop .slider h2 {
+    font-size: 40px;
+    font-family: "NanumSquareEB";
+    line-height: 1.3;
+}
+.bannerTop .slider p {
+    margin-top: 20px;
+    font-size: 15px;    
+    font-family: "NanumSquareB";
+}
+/* data-idx에 따른 배경 스타일 제어 (필요시 활용) */
+.bannerTop[data-idx="0"] > .slider:nth-child(1) {}
+.bannerTop[data-idx="1"] > .slider:nth-child(2) {}
+.bannerTop[data-idx="2"] > .slider:nth-child(3) {}
+
+.bannerTop > .slider:nth-child(1) {background: #94715a;}
+.bannerTop > .slider:nth-child(2) {background: #e7b6a6;}
+.bannerTop > .slider:nth-child(3) {background: #8e6af2;}
+.bannerTop > .slider:nth-child(1) h2 > span {background: #724c32;}
+.bannerTop > .slider:nth-child(2) h2 > span {background: #d07769;}
+.bannerTop > .slider:nth-child(3) h2 > span {background: #35429e;}
+.bannerTop > .slider:nth-child(1) .bannerImg {margin: 30px 20px 0 0;}
+.bannerTop > .slider:nth-child(2) .bannerImg {margin: 70px 20px 0 0;}
+.bannerTop > .slider:nth-child(3) .bannerImg {margin: 10px 20px 0 0;}
+
+
+
+.content ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    box-shadow: inset 0 0 5px #fff
+}
+.content ul .box {
+    display: flex;
+    width: 100%;
+    min-height: 250px;
+    border-radius: 6px;
+    box-shadow: inset 0 0 5px #fff
+}
+
+/* .content ul li:nth-child(1) {background: url(../images/main_images/img01_01.png) no-repeat;}
+.content ul li:nth-child(2) {background: url(../images/main_images/img01_02.png) no-repeat;}
+.content ul li:nth-child(3) {background: url(../images/main_images/img01_03.png) no-repeat;} */

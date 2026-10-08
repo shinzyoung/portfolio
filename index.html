@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신지영 | 퍼블리셔 포트폴리오</title>
+  <!-- 기존 공통 스타일 및 리셋 -->
+  <link rel="stylesheet" href="./common/reset.css">
+  <link rel="stylesheet" href="./common/common.css">
+  <!-- 메인 전용 스타일 -->
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+  <!-- 상단 헤더 영역 -->
+  <header class="header">
+    <div class="inner">
+      <h1 class="logo">
+        <img src="./images/main_images/icon.gif" class="logoIcon">
+        <div>
+            <h3>Portfolio HUB</h3>
+            <p>Front-End & UI/UX Publishing Showcase</p>
+        </div>
+    </h1>
+      <nav class="nav">
+        <ul class="category-list">
+          <li><button class="active" data-filter="all">전체보기</button></li>
+          <li><button data-filter="ppt">PPT 포트폴리오</button></li>
+          <li><button data-filter="player">미디어 플레이어</button></li>
+          <li><button data-filter="event">이벤트 페이지</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 컨텐츠 영역 (그리드 카드 목록) -->
+  <main class="main-container">
+    <div class="inner">
+      <section class="intro-section">
+        <h2>안녕하세요, 프론트엔드 퍼블리셔 신지영입니다.</h2>
+        <p>기획부터 인터랙션 구현까지 완성도 있게 제작한 프로젝트 모음입니다.</p>
+      </section>
+
+      <!-- 카드 그리드 -->
+      <div class="card-grid">
+        <!-- 카드 1: PPT 포트폴리오 -->
+        <article class="card" data-category="ppt" onclick="openViewer('Portfolio_2.html', 'PPT 포트폴리오')">
+          <div class="card-thumb ppt-bg">
+            <span class="badge">PPT & Doc</span>
+            <div>PPT Portfolio</div>
+          </div>
+          <div class="card-body">
+            <h3>PPT 형식 포트폴리오</h3>
+            <p>기존 기획서 및 프레젠테이션 자료를 웹 표준 형식으로 구현한 문서형 포트폴리오입니다.</p>
+            <span class="view-btn">보러가기 &rarr;</span>
+          </div>
+        </article>
+
+        <!-- 카드 2: 미디어 플레이어 -->
+        <article class="card" data-category="player" onclick="openViewer('player.html', '웹 비디오 플레이어')">
+          <div class="card-thumb player-bg">
+            <span class="badge">UI Component</span>
+            <div>Video Player</div>
+          </div>
+          <div class="card-body">
+            <h3>커스텀 비디오 플레이어</h3>
+            <p>HTML5 Video API와 자바스크립트를 활용해 직접 디자인하고 커스텀한 반응형 동영상 플레이어입니다.</p>
+            <span class="view-btn">보러가기 &rarr;</span>
+          </div>
+        </article>
+
+        <!-- 카드 3: 이벤트 페이지 -->
+        <article class="card" data-category="event" onclick="openViewer('event.html', '이벤트 페이지')">
+          <div class="card-thumb event-bg">
+            <span class="badge">Promotion</span>
+            <div>Event Promo</div>
+          </div>
+          <div class="card-body">
+            <h3>이벤트 & 프로모션 페이지</h3>
+            <p>다양한 레이아웃과 팝업 인터랙션이 포함된 시즌 이벤트 홍보용 웹 페이지입니다.</p>
+            <span class="view-btn">보러가기 &rarr;</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- 선택된 프로젝트가 즉시 실행되는 뷰어 영역 -->
+      <section class="viewer-section" id="viewerSection">
+        <div class="viewer-header">
+          <h3 id="viewerTitle">프로젝트 미리보기</h3>
+          <div class="viewer-actions">
+            <button onclick="refreshViewer()">새로고침</button>
+            <button onclick="closeViewer()">닫기 ✕</button>
+          </div>
+        </div>
+        <div class="viewer-content">
+          <iframe id="projectIframe" src="" frameborder="0"></iframe>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <p>&copy; 2026 Shin Ji Young. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

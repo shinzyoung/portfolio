@@ -1,0 +1,245 @@
+@charset "utf-8";
+
+/* 기본 레이아웃 공통 */
+body {
+  background-color: #f4f6f8;
+  color: #333;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.inner {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 헤더 & 네비게이션 (해피빈 그린 포인트) */
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid #e1e4e8;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #00c73c;
+  margin: 0;
+  line-height: 1.2;
+}
+.logo h3 {
+    color: var(--stage-bg);
+    font-family: "NanumSquareEB";
+    font-weight: 900;
+    font-size: 20px;
+}
+.logo p {
+    font-family: "NanumSquareB";
+    font-size: 15px;
+}
+.logo > img {
+    width: 50px;
+    height: 50px;
+}
+
+.category-list {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0; 
+
+}
+.category-list button {
+  background: #f1f3f5;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  font-family: "NanumSquareB";
+  font-size: 15px;  
+}
+.category-list button:hover,
+.category-list button.active {
+  background: #00c73c;
+  color: #fff;
+}
+
+/* 메인 인트로 */
+.main-container {
+  padding: 40px 0;
+}
+.intro-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.intro-section h2 {
+  font-family: "NanumSquareEB";
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #111;
+
+}
+.intro-section p {
+  font-family: "NanumSquareB";
+  font-size: 20px;
+  color: #666;
+  margin: 0;
+}
+
+/* 그리드 카드 디자인 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #eaeaea;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.card-thumb {
+  height: 140px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 15px;
+}
+.card-thumb > div {
+    position: absolute;
+    inset: 0 0 0 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    /* font-family: "NanumSquareEB"; */
+    font-family: "NanumSquareB";
+    font-size: 30px;
+
+}
+/* 카드별 썸네일 배경색 포인트 */
+/* .ppt-bg { background: linear-gradient(135deg, var(--accent) 0%, var(--link) 100%);}
+.player-bg { background: linear-gradient(135deg, var(--purple) 0%, var(--cyan) 100%); }
+.event-bg { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); } */
+
+.ppt-bg { background: var(--card-thumb1);}
+.player-bg { background: var(--card-thumb2);}
+.event-bg { background: var(--card-thumb3);}
+
+.badge {
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.card-body {
+  padding: 20px;
+}
+.card-body h3 {
+  font-family: "NanumSquareB";
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  color: #222;
+}
+.card-body p {
+  font-family: "NanumSquareB";
+  font-weight: 400;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 15px 0;
+  height: 42px; /* 두 줄 고정용 */
+  overflow: hidden;
+}
+.view-btn {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00c73c;
+}
+
+/* 뷰어 영역 (iframe) */
+.viewer-section {
+  display: none; /* 평소엔 숨김 */
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e1e4e8;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  margin-top: 30px;
+}
+.viewer-header {
+  background: #212529;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.viewer-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+.viewer-actions {
+  display: flex;
+  gap: 10px;
+}
+.viewer-actions button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.viewer-actions button:hover {
+  background: rgba(255,255,255,0.4);
+}
+.viewer-content {
+  width: 100%;
+  height: 650px;
+}
+.viewer-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* 푸터 */
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  color: #888;
+  font-size: 13px;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}

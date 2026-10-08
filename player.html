@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./common/reset.css">
+  <link rel="stylesheet" href="./common/common.css">
+  <link rel="stylesheet" href="./css/player.css">
+  <title>모아나 동영상플레이어 커스텀</title>
+</head>
+
+<body>
+  <div class="video-container" id="videoContainer">
+    <video src="video/Moana02.mp4" class="video" poster="/images/player/poster1.jpeg"  muted playsinline></video>    
+    <div class="controls">      
+      <div class="box">
+        <div class="progress">
+          <div class="bar">
+            <span class="pin"></span>
+          </div>
+        </div>
+      </div>
+      <button class="btnPlay"></button>
+      <button class="btnStop"></button>
+      <button class="fast_f"></button>
+      <button class="btnMute"></button>      
+      <input type="range" id="volume" min="0" max="1" value="1" step="0.1" style="background-size: 100% 100%">
+      <div class="timeArea">
+        <span class="playTime">00:00 </span>
+        <span class="tottime"></span>
+      </div>
+      <button class="fullScreen"></button>
+    </div>
+  </div>
+
+  <script src="js/player.js"></script>
+</body>
+
+</html>
