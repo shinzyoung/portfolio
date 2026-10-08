@@ -62,15 +62,20 @@
 * {box-sizing: border-box;}
 html {scroll-behavior: smooth;}
 html, body {
-  width: 100%;
+  /* width: 100%;
   height: 100%;
-  overflow: hidden;
-  background: #000;
-  color: var(--text);
-  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow: hidden;  
   font-size: 16px;
-  line-height: 1.75;
-  overscroll-behavior: none;
+  line-height: 1.75; */
+  height: auto !important; /* 높이 100% 고정을 해제하여 내용물에 따라 늘어나게 함 */
+  min-height: 100%;
+  overflow: auto !important; /* 스크롤바가 정상적으로 생기도록 허용 */
+  overflow-x: hidden; /* 가로 스크롤만 방지 */
+  background: #f4f6f8 !important; /* 배경색도 포트폴리오에 어울리는 밝은 톤으로 변경 */
+  color: #333 !important;
+  overscroll-behavior: auto;
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;  
+  
 }
 
 .pointNone { pointer-events: none !important; }

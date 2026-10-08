@@ -4,6 +4,12 @@
   STAGE: 항상 1920*1080 비율 / JS가 뷰포트에 맞춰
   scale()만 적용 --> 창 크기가 줄어도 레이아웃 그대로 축소
 ========================================================*/
+html, body {
+  background: #000 !important;
+  color: var(--text);
+  overscroll-behavior: none;
+
+}
 #stage {
  position: fixed;
  top: 50%;
