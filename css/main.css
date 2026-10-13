@@ -241,14 +241,21 @@ html, body {
   height: 500px; */
 
   width: 100%;  
+  height: 80vh;
   aspect-ratio: 16 / 10; 
-  max-height: 650px;
-  min-height: 400px;
+  /* max-height: 650px; */
+  max-height: 800px;  
+  /* min-height: 400px; */
 }
 
 
 @media (min-width: 768px) {
   .viewer-content {
+    /* height: 650px; */
+    /* height: 790px; */
+    height: 830px;
+  }
+  .viewer-content.has-video {
     height: 650px;
   }
 }

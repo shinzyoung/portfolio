@@ -1,6 +1,7 @@
 // 카테고리 탭 필터링 기능
 const filterButtons = document.querySelectorAll('.category-list button');
 const cards = document.querySelectorAll('.card');
+const viewerContainer = document.querySelector('.viewer-content');
 
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -46,3 +47,16 @@ function refreshViewer() {
     projectIframe.src = currentSrc;
   }, 100);
 }
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const category = card.getAttribute('data-category');
+
+    // 카테고리가 'player'(비디오)인 경우에만 클래스 추가, 그 외에는 모두 제거
+    if (category === 'player') {
+      viewerContainer.classList.add('has-video');
+    } else {
+      viewerContainer.classList.remove('has-video');
+    }
+  });
+});
