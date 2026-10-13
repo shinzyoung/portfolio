@@ -49,16 +49,16 @@ fast_f.addEventListener('click', function(){
   idx += 1;   
   if (idx == 1) {
     myAudio.playbackRate = 2;  
-    fast_f.style.background = "url(img/ui_img/icon2.webp)";
+    // fast_f.style.background = "url(img/ui_img/icon2.webp)";
   } else if( idx == 2) {
     myAudio.playbackRate = 4;
-    fast_f.style.background = "url(img/ui_img/icon4.webp)";
+    // fast_f.style.background = "url(img/ui_img/icon4.webp)";
   } else if( idx == 3 ){
     myAudio.playbackRate = 6;
-    fast_f.style.background = "url(img/ui_img/icon6.webp)";
+    // fast_f.style.background = "url(img/ui_img/icon6.webp)";
   } else {
     myAudio.playbackRate = 1;
-    fast_f.style.background = "url(img/ui_img/controls_icon.png) -231px -418px";
+    // fast_f.style.background = "url(img/ui_img/controls_icon.png) -231px -418px";
     idx = 0;
   }
 });

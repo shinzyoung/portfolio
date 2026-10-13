@@ -236,9 +236,15 @@ html, body {
   background: rgba(255,255,255,0.4);
 }
 .viewer-content {
-  width: 100%;
-  height: 500px;
+  /* width: 100%;
+  height: 500px; */
+
+  width: 100%;  
+  aspect-ratio: 16 / 10; 
+  max-height: 650px;
+  min-height: 400px;
 }
+
 
 @media (min-width: 768px) {
   .viewer-content {
@@ -262,6 +268,7 @@ html, body {
   border-top: 1px solid #ddd;
   background: #fff;
 }
+
 @media (min-width: 768px) {
   .category-list li {
     flex: initial;
@@ -269,5 +276,12 @@ html, body {
   }
   .category-list button {
     width: auto;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .viewer-header h3 {
+    display: none;
   }
 }
