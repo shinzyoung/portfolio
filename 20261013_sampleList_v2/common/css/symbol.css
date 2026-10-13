@@ -1,0 +1,151 @@
+.symbolArea {
+  position: absolute;
+  top: 250px;
+  left: 140px;
+  width: 990px;
+  height: 360px;
+  /* box-shadow: inset 0 0 5px #000; */
+}
+
+/* 부등호 관련 css*/
+.sign {  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 40px;
+  font-family: "NotoSansKR-Medium";
+}
+.sign > div {
+  display: flex;
+  align-items: center;
+}
+.signArea {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  margin:0 20px;
+  border-radius: 50px;
+  border: 3px solid #2770f5;
+  background: #fff;
+  position: relative;
+}
+.signArea::before,
+.signArea .selectedImg:empty::before {
+  content:'?';
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  color:#094cc7;
+  font-family: "NotoSansKR-Medium";
+  pointer-events: none;
+}
+.signArea[data-set="on"][data-answer="no"]::before,
+.signArea[data-set="on"][data-answer="yes"]::before,
+.signArea[data-set="off"][data-answer="no"]::before,
+.signArea[data-set="off"][data-answer="yes"]::before {color:transparent;}
+
+/* 정답처리 pointNone처리 추가 */
+.signArea[data-answer="yes"],
+.signArea[data-answer="yes"] .signList {pointer-events: none;}
+
+
+/* 260326 추가 */
+.sign,
+.sign > div,
+.signArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
+
+/* 선택된 부등호가 담길 곳 */
+.selectedImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; 
+}
+
+.signBox {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  border-radius: 40px;
+  border: 3px solid #2770f5;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.signBox::before {
+  content:'';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-bottom: 20px solid #2770f5;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top:0;
+}
+.signList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;  
+  border: 3px solid #2770f5;
+  border-radius: 50px;  
+}
+.signList:hover {
+  background: #2770f5;  
+}
+.signList > img {
+  pointer-events: none;
+}
+.signList > img:nth-child(2) {display: none;}
+.signList:hover img:nth-child(1) {display: none;}
+.signList:hover img:nth-child(2) {display: block;}
+
+.sign .deg {top: -3px;margin-left: 2px;}
+/* 캐릭터 팝업 말풍선 다운 애니 */
+.signArea[data-set="on"] .signBox {
+  opacity: 1;
+  pointer-events: auto;
+  animation:boxDown 0.4s ease-out forwards;
+}
+.signBox > div + div {margin-left: 10px;}
+
+@keyframes boxDown {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* *************************************************************** */
+/* *************************************************************** */

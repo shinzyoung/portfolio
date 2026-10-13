@@ -1,0 +1,134 @@
+﻿<contents>
+	<study>
+
+		<ui_type>12</ui_type>
+		<chapter>6</chapter>
+		<title>수학 SampleList ver2.0(20260818) </title>
+
+		<menu id="1">
+			<type>5</type>
+			<title>01_약물리스트</title>
+			<file_path>01_약물/content.html</file_path>
+		</menu>
+		<menu id="2">
+			<type>5</type>
+			<title>02_드래그_클릭유형</title>
+			<file_path>02_드래그_클릭유형/content.html</file_path>
+		</menu>
+		<menu id="3">
+			<type>5</type>
+			<title>03_복수정답처리(드래그)</title>
+			<file_path>03_복수정답처리(드래그)/content.html</file_path>
+		</menu>
+		<menu id="4">
+			<type>5</type>
+			<title>04_분수식</title>
+			<file_path>04_분수식/content.html</file_path>
+		</menu>
+		<menu id="5">
+			<type>5</type>
+			<title>05_연산식</title>
+			<file_path>05_연산식(덧셈,곱셈,나눗셈)/content.html</file_path>
+		</menu>
+		<menu id="6">
+			<type>5</type>
+			<title>06_그래프(클릭유형)</title>
+			<file_path>06_그래프(클릭유형-원,사각형)/content.html</file_path>
+		</menu>
+		<menu id="7">
+			<type>5</type>
+			<title>07_선긋기</title>
+			<file_path>07_선긋기/content.html</file_path>
+		</menu>
+		<menu id="8">
+			<type>5</type>
+			<title>08_테이블</title>
+			<file_path>08_테이블/content.html</file_path>
+		</menu>
+		<menu id="9">
+			<type>5</type>
+			<title>09_테이블2(선)</title>
+			<file_path>09_테이블2(선)/content.html</file_path>
+		</menu>
+		<menu id="10">
+			<type>5</type>
+			<title>10_막대그래프</title>
+			<file_path>10_막대그래프/content.html</file_path>
+		</menu>
+		<menu id="11">
+			<type>5</type>
+			<title>11_전개도</title>
+			<file_path>11_전개도/content.html</file_path>
+		</menu>
+		<menu id="12">
+			<type>5</type>
+			<title>12_전개도_case2</title>
+			<file_path>12_전개도_case2/content.html</file_path>
+		</menu>
+		<menu id="13">
+			<type>5</type>
+			<title>13_준비물(자)</title>
+			<file_path>13_준비물(자)/content.html</file_path>
+		</menu>
+		<menu id="14">
+			<type>5</type>
+			<title>14_준비물(각도기)</title>
+			<file_path>14_준비물(각도기)/content.html</file_path>
+		</menu>
+		<menu id="15">
+			<type>5</type>
+			<title>15_준비물(컴퍼스)_ver1</title>
+			<file_path>15_준비물(컴퍼스)_ver1/content.html</file_path>
+		</menu>
+		<menu id="16">
+			<type>5</type>
+			<title>16_준비물(컴퍼스)_ver2</title>
+			<file_path>16_준비물(컴퍼스)_ver2/content.html</file_path>
+		</menu>
+		<menu id="17">
+			<type>5</type>
+			<title>17_준비물(컴퍼스)_ver3</title>
+			<file_path>17_준비물(컴퍼스)_ver3/content.html</file_path>
+		</menu>
+		<menu id="18">
+			<type>5</type>
+			<title>18_쌓기나무(클릭)</title>
+			<file_path>18_쌓기나무(클릭)/content.html</file_path>
+		</menu>		
+		<menu id="19">
+			<type>5</type>
+			<title>19_쌓기나무(3d)</title>
+			<file_path>19_쌓기나무(3d)/content.html</file_path>
+		</menu>		
+		<menu id="20">
+			<type>5</type>
+			<title>20_쌓기나무(3d)_정오답처리</title>
+			<file_path>20_쌓기나무(3d)_정오답처리/content.html</file_path>
+		</menu>		
+		<menu id="21">
+			<type>5</type>
+			<title>21_쌓기나무(3d)_WebGl_Fallback</title>
+			<file_path>21_쌓기나무(3d)_WebGl_Fallback/content.html</file_path>
+		</menu>		
+		<menu id="22">
+			<type>5</type>
+			<title>22_정답입력</title>
+			<file_path>22_정답입력/content.html</file_path>
+		</menu>
+		<menu id="23">
+			<type>5</type>
+			<title>23_부등호팝업형</title>
+			<file_path>23_부등호팝업형/content.html</file_path>
+		</menu>
+		<menu id="24">
+			<type>5</type>
+			<title>24_캡쳐test</title>
+			<file_path>24_캡쳐test/content.html</file_path>
+		</menu>
+		<menu id="25">
+			<type>5</type>
+			<title>25_기타</title>
+			<file_path>25_기타/content.html</file_path>
+		</menu>
+	</study>
+</contents>

@@ -161,6 +161,7 @@ html, body {
 .ppt-bg { background: var(--card-thumb1);}
 .player-bg { background: var(--card-thumb2);}
 .event-bg { background: var(--card-thumb3);}
+.EdTech { background: var(--card-thumb4);}
 
 .badge {
   background: rgba(0, 0, 0, 0.3);

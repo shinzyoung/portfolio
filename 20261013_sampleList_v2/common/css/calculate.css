@@ -1,0 +1,95 @@
+/* ul 계산식 */
+.cal,.dash_cal{position: relative; }
+.cal li,
+.dash_cal li,
+.cal li em,
+.dash_cal li em{display:flex;justify-content:center;align-items:center;}
+.cal li > em,
+.dash_cal > li > em {width: 70px;height: 70px;position: relative;display: flex;text-align: center;line-height: 1.8;}
+
+
+/* 계산식 퀴즈박스 */
+.cal .text,.dash_cal .text{display:flex;justify-content:center; padding: 0;}
+.cal .text,.dash_cal .text{border-radius: inherit;}
+
+/* 계산식 배경 */
+.cal .pink {background:#fad5e5;}
+.cal .blue {background:#d3edfb;}
+.cal .green {background:#D8E9D2;}
+.dash_cal .pink {background:#fad5e5;}
+.dash_cal .blue {background:#d3edfb;}
+.dash_cal .green {background:#D8E9D2;}
+
+/**** 빨간색 짝대기 ****/
+.slash {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%) rotate(-50deg);width: 60px;height: 4px;background: #ff3366;}
+/* 올림 숫자 */
+.redtxt {position: absolute;top: -43px;left: 50%;transform: translateX(-50%);color:#ff3366;font-size: 30px;}
+.cal .redtxt {top: -25px;}
+
+/* 하단 검은선 */
+.line{position: relative;}
+.line::before {content:'';width: 100%;height:3px;background-color:#000;position:absolute;bottom: 0;margin:auto;left: 0;z-index:1}
+.dash_cal:not(.all) .line::before{width: 104%;}
+.divisionBox .line::before{background-color:transparent;}
+
+/* 실선 & 점선 삭제 */
+.wnLine::before,
+.hnLine::after,
+.dash_cal > div[class^="area"]::after{content:none !important;}
+
+/* 계산식 점선 */
+ul.dash_cal.all{border: 2px dashed #828282;}
+.dash_cal > li > em,
+.dash_cal > li > span > span > em,
+.dash_cal > li > span > span > em:first-of-type{border-right: 2px dashed #828282;}
+.dash_cal.all > li > span > span > em:not(:first-of-type):last-of-type,
+.dash_cal.all > li > em:not(:first-of-type):last-of-type{border-right:none ;}
+.dash_cal.all > li:not(:last-of-type) > em{border-bottom: 2px dashed #828282;}
+
+div.dash_cal.all{display: flex; flex-direction: column; flex-wrap: wrap; border-top: 2px dashed #828282;border-left: 2px dashed #828282;}
+div.dash_cal > div:not(.hnLine){border-right:2px dashed #828282; border-bottom: 2px dashed #828282;}
+
+
+/* 가로 점선 (개별 class에 추가) */
+.divi{position: relative; display: flex; flex-direction: column; overflow: hidden; font-family: inherit; width: fit-content;}
+.divi > li{position: relative; display: flex;}
+.divi > li em {justify-content: center;align-items: center;display: flex; }
+.divi .line::before{right: 0;left: unset;}
+
+/* 나눗셈 */
+.divisionBox {width: fit-content;display: inline-flex;flex-direction: column;align-items: center;justify-content: center;}
+.divisionBox>div {display: flex;align-items: center;justify-content: flex-end;position: relative;}
+.divisionBox>div.line::after {content: '';width: calc(100% - 58px);height: 3px;background-color: #000;position: absolute;bottom: -1px;right: -15px;will-change: transform;z-index: 1;}
+.divisionBox>div>span {width: 70px;height: 70px;display: inline-flex;align-items: center;justify-content: center;position: relative;}
+.divisionBox>div>span.dot::after {content: '';width: 10px;height: 10px;background-color: #000;border-radius: 50%;position: absolute;bottom: 12px;right: -6px;z-index: 1;will-change: transform;}
+
+.divisionBox>div>span.blue {background-color: #C6EAFA;}
+.divisionBox>div>span.red {background-color: #FAD5E5;}
+.divisionBox>div>span.green {background-color: #D8E9D2;}
+
+/* 브라켓을 닫기괄호로 모양 만들기 */
+.divisionBox>div>span.bracket::before {content: ')';position: absolute;right: -14px;top: 6px;transform: scale(1.2, 1.7);background-color: transparent;line-height: 1;}
+
+/* data-type="1" : 나눗셈 점선 없음 */
+/* data-type="2" : 나눗셈 세로 점선 */
+/* data-type="3" : 나눗셈 전체 점선 */
+.divisionBox[data-type="2"]>div>span {border-right: 2px dashed #828282;}
+.divisionBox[data-type="2"]>div.line::after {width: calc(100% - 54px);}
+
+.divisionBox[data-type="3"]>div>span {border-right: 2px dashed #828282;border-bottom: 2px dashed #828282;width: 70px;height: 70px;}
+.divisionBox[data-type="3"]>div:first-of-type>span {border-top: 2px dashed #828282;}
+.divisionBox[data-type="3"]>div>span:first-of-type {border-left: 2px dashed #828282;}
+/* .divisionBox[data-type="3"]>div>span.dot::after {bottom: 26px;} */
+.divisionBox[data-type="3"]>div.line::after {right: 0;}
+.divisionBox[data-type="3"]:has(div>.bracket:first-child)>div.line::after {width: calc(100% - 71px);}
+
+/* 공통 소수점 표시 */
+.dot::after,
+.divisionBox>div>span.dot::after {content: '';width: 8px;height: 8px;background-color: #000;border-radius: 50%;position: absolute;bottom: 15px;right: -5px;z-index: 1;}
+
+/* 빈박스 */
+.emptyBox1 {width: 62px;height: 62px;background: #f1d5e1;border-radius: 15px;}
+.emptyBox2 {width: 62px;height: 62px;background: #fff;border:4px solid #027af5;border-radius: 15px;}
+
+/* 나눗셈 화살표 */
+.dot>img {position: absolute;top: -15px;right: -10px;height: 62px;transform: rotate(180deg);}

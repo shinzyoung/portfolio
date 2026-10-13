@@ -1,0 +1,33 @@
+/*
+    ================================
+    - btn.css
+    - 설명  : [힌트 팝업 버튼(힌트는 미사용) / section 팝업 버튼 / 정답 버튼] CSS
+    - 수정일: 2025-11-18
+    ================================
+*/
+
+/* ================================= HINT BOX ===================================== */
+/* 힌트 */
+#hint_box {    
+    position: absolute;
+    z-index: 30;
+}
+#hint-button {
+    /* position: absolute; */
+    position: relative;
+    width: 72px;
+    height: 72px;
+    
+    z-index: 40;
+}
+.activation-hint {
+    background: url("../images/btn_tip_0002.png") no-repeat;
+}
+.inactivation-hint {
+    background: url("../images/btn_tip_0001.png") no-repeat;
+}
+
+/* 힌트 박스 */
+
+/* ================================= HINT BOX ===================================== */
+

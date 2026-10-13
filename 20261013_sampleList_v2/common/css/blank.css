@@ -1,0 +1,134 @@
+@charset "utf-8";
+:root {
+  --border_gray: #aaa9a9;
+  --border_blue : #00a0e9;
+}
+/* 블록쌓기 모눈종이 */
+.clickBox[data-grid],
+.gridBox[data-grid] {
+  display: inline-flex;
+  flex-direction: column;
+  background: center/100% no-repeat;
+  justify-content: center;
+  align-items: center;
+  will-change: transform, opacity;
+}
+
+.clickBox[data-grid="3x3"] {
+  width: 180px;
+  height: 180px;
+  /* box-shadow: inset 0 0 10px #000; */
+}
+
+.clickBox[data-grid="2x3"] {  
+  width: 120px;
+  height: 180px;
+  /* box-shadow: inset 0 0 10px #000; */
+}
+
+.clickBox[data-grid]>div {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.clickBox[data-grid]>div>.clickObj  {
+  width: 60px;
+  height: 60px;
+  display: block;
+  border-right: 2px dashed var(--border_gray);
+  border-bottom: 2px dashed var(--border_gray);
+  position: relative;
+}
+
+.clickBox[data-grid]>div>.clickObj::before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height:  calc(100% + 4px);
+  background-color: #f7c896;
+  border: 2px solid #a37341;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.clickBox[data-grid]>div>.clickObj:nth-of-type(1) {
+  border-left: 2px dashed var(--border_gray);
+}
+
+.clickBox[data-grid]>div:nth-of-type(1)>.clickObj {
+  border-top: 2px dashed var(--border_gray);
+}
+
+.clickBox[data-grid]>div>.clickObj[data-pressed="true"]::before {
+  opacity: 1;
+}
+
+.clickBox[data-grid] > p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 4px 10px 5px;
+  border-radius: 12px;  
+  position: absolute;
+  top: -65px;
+  font-size: 25px;  
+}
+
+.clickBox[data-grid] > em {
+  font-size: 36px;  
+  height: 50px;
+  padding-bottom: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.clickBox[data-grid] .nomal {
+  background-color: #ece0c5;
+}
+.clickBox[data-grid] .top {
+  background-color: #d9f0cc;
+}
+.clickBox[data-grid] .front {
+  background-color: #fcd8dc;
+}
+.clickBox[data-grid] .side {
+  background-color: #d2e7f8;
+}
+/* 45도 기운 형태 :: deg 클래스 추가 */
+.clickBox.deg {
+  transform: rotate(45deg);  
+}
+.clickBox.deg[data-grid="3x3"] p {
+  transform: rotate(-45deg);
+  top:-40px;
+  left: -50px;
+}
+.clickBox.deg[data-grid="2x3"] p {
+  transform: rotate(-45deg);
+  top:-10px;
+  left: -80px;
+}
+
+
+.blankArea > div + div {margin-left: 80px;}
+
+/* 파란색 선 :: blankArea영역에 blue 클래스 추가한 경우 선 색상 변경 */
+.blankArea.blue .clickBox[data-grid]>div>.clickObj  {
+  border-color: var(--border_blue);
+  border-color: var(--border_blue);
+}
+.blankArea.blue .clickBox[data-grid]>div>.clickObj:nth-of-type(1) {
+  border-color: var(--border_blue);
+}
+.blankArea.blue  .clickBox[data-grid]>div:nth-of-type(1)>.clickObj {
+  border-color: var(--border_blue);
+}

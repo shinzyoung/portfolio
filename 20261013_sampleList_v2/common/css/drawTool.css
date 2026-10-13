@@ -1,0 +1,123 @@
+/*
+ 5,6학년 2학기 
+ 교과진도 > 한눈에 정리하기 
+ 펜쓰기 추가 v260528
+*/
+
+/* CANVAS 관련 */
+#draw-canvas {
+    left: 30px;
+    top: 30px;
+}
+#draw-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1280px;
+    height: 800px;
+    background-color: #fff;
+    opacity: 0.5;
+    z-index: 42;
+}
+#draw-bg.none {
+    display: none;
+}
+#draw-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 45;
+}
+#draw-canvas.none {
+    display: none;
+}
+
+/* DRAW AREA 위치 조정 */
+#draw_area {
+    position: absolute;    ;
+    left: 1135px;    
+    top: 120px;    
+    width: 90px;
+    height: 256px;
+    background-color: #cde6ff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 40px;
+    padding: 10px 0;
+    user-select: none;
+    box-sizing: border-box;
+
+    /* NOTE: HINT BOX 가 draw_area 보다 뒤로 가야하면 조정 필요  */
+    z-index: 45;
+}
+
+#draw_area.active {
+    filter: grayscale(100%);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+
+/* PEN */
+#pen-button {
+    position: relative;
+    width: 71px;
+    height: 71px;
+    background-size: contain;
+
+    background-repeat: no-repeat;
+    background-image: url(../images/button_01.png);
+
+    /* NOTE: 추가(251117) */
+    z-index: 45;
+}
+#pen-button.activation-pen {
+    background-image: url(../images/button_01_on.png);
+}
+
+/* ERASE */
+#erase-button {
+    position: relative;
+    /* position: absolute;
+    top: 100px; */
+    width: 72px;
+    height: 72px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/button_02.png);
+
+    /* NOTE: 추가(251117) */
+    z-index: 45;
+}
+
+#erase-button.activation-erase {
+    background-image: url(../images/button_02_on.png);
+}
+
+#erase-all-button {
+    position: absolute;
+    left: 1192px;
+    top: 212px;
+    width: 74px;
+    height: 74px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/button_03.png);
+
+    /* NOTE: 추가(251117) */
+    z-index: 45;
+}
+/* 
+.activation-erase-all
+{
+    background: url("../../common/images/button.png") no-repeat -86px -170px;
+}
+
+.inactivation-erase-all
+{
+    background: url("../../common/images/button.png") no-repeat 0 -170px;
+} */
+

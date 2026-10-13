@@ -1,0 +1,272 @@
+/* 자, 각도기, 삼각자 css */
+
+/* 각도기 보기 버튼*/
+.protractor::after {content: "각도기 보기";}
+.protractor[data-pressed="true"]::after {content: "각도기 닫기";}
+
+/* 자 보기 버튼 */
+.protractor.rl::after {content: "자 보기";}
+.protractor.rl[data-pressed="true"]::after {content: "자 닫기";}
+
+/* 공통 */
+.protractor{display: inline-flex;align-items: center;z-index: 4;width: fit-content;height: 52px;padding: 0 18px;border: 5px solid #ebebeb;background: #002164;border-radius: 40px;box-shadow: 3px 3px 3px rgba(0,0,0,0.2);line-height: 1.5;position: absolute;top: 75px;right: 50px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.protractor::after{font-family: "NotoSansKR-Medium";font-size: 25px;color: #fff;pointer-events: none;padding-bottom: 3px;}
+.protractor[data-pressed="true"] {border-color:#fff;background-color: #b0b3b5;}
+.protractor~.roSen{display: flex;align-items: center;width: max-content;position: fixed;right: 50px;top: 150px;line-height: 1;font-size: 15px;font-family: "NotoSansKR-Medium";color: #333e6e;;opacity: 0; pointer-events: none;}
+.protractor~.roSen::before {content: ""; background: url(../../common/images/ruler/rotate.png) no-repeat;width: 25px;height: 25px;background-size: contain;margin-right: 10px; }
+
+/* 회전버튼 */
+.rotate{position: absolute; background: url(../../common/images/ruler/rotate.png) no-repeat center / 100%;width: 55px;height: 92px;top: -90px;left: calc(50% - 27px);cursor: pointer;}
+.rotate.pr{background: url(../../common/images/ruler/rotate.png) no-repeat center / 100%;width: 30px;height: 30px;left: unset;top: unset; right: -50px; bottom: 0;}
+
+/* 확대하기 버튼 */
+.expand_btn{display: flex;justify-content: center;align-items: center;position: absolute;width: 49px;height: 49px;border-radius: 50%;background:#2f91ff ;border: 4px solid #75b6ff;}
+.expand_btn::before{content: '';background: url(../icon/expand_btn.webp)no-repeat center/100%;width: 26px;height: 29px;pointer-events: none;}
+
+/* 드래그 object / object resize */
+.objWrap {position: fixed;top: 0;left: 0;transform-origin: top left;user-select: none;z-index: 3; pointer-events: none;}
+.objBox {position: relative;text-indent: 0; pointer-events: auto;will-change: transform;}
+
+/* 3번자 삽화길이 */    
+.objBox.angle {width: 538px;}  
+.objBox img {width: 100%;height: 100%;pointer-events: none;}
+.objBox .reDot:not(.rotate) {width: 20px;height: 20px;background-color: #fff;border-radius: 50%;border: 3px solid #c4c4c4;position: absolute;}
+
+
+.protractor:not([data-pressed="true"])+.objWrap {opacity: 0;}
+.protractor:not([data-pressed="true"])+.objWrap > .objBox  {pointer-events: none;}
+.protractor[data-pressed="true"]~.roSen{opacity: 1;}
+
+.protractor:not([data-pressed="true"])~.objWrap{opacity: 0;}
+.protractor:not([data-pressed="true"])~.objWrap > .objBox {pointer-events: none;}
+
+.objWrap.r1 .angle{width: 615px;}
+.objWrap.t1 {top: 630px;left: 730px;}
+.objWrap.t2 {top: 630px;left: 1100px;}
+.objWrap.t1 .rotate.pr{right: 250px;}
+.objWrap.t2 .rotate.pr{right: -60px;bottom: 0;}
+.objWrap.t1 .angle{width: 240px;}
+.objWrap.t2 .angle{width: 400px;}
+
+/* 컴퍼스 추가 */
+/* ===== 컴퍼스 버튼 가상 요소 (기존 자/각도기 버튼과 통일) ===== */
+.protractor.compass::after { content: "컴퍼스 보기"; }
+.protractor.compass[data-pressed="true"]::after { content: "컴퍼스 닫기"; }
+
+/* ===== 토글 노출 제어 (기존 protractor 규칙 연동) ===== */
+.protractor.compass:not([data-pressed="true"]) ~ .compassWrap { opacity: 0; pointer-events: none; }
+.protractor.compass[data-pressed="true"] ~ .compassWrap { opacity: 1; pointer-events: auto; }
+.protractor.compass[data-pressed="true"] ~ .compassSen { opacity: 1; }
+
+/* ===== Canvas 및 컴퍼스 레이어 ===== */
+#compassCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.objWrap.compassWrap {
+  z-index: 3;
+}
+
+/* .compassBox {
+  position: relative;
+  width: 150px;
+  height: 200px;
+  transform-origin: 20px 180px; 
+  will-change: transform;
+  box-shadow: inset 0 0 10px red;
+} */
+ /* 고정 몸체 상자 규격 고정 */
+.compassBox {
+  position: relative;
+  width: 150px; /* 고정 크기 유지 */
+  height: 200px;
+  transform-origin: 20px 180px; 
+  will-change: transform;
+  box-shadow: inset 0 0 10px red;
+
+  
+}
+
+/* 이미지 기본 공통 스타일 */
+.compass-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 1. 고정 몸체 이미지 */
+.compass-img.body {
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+/* 2. 회전하는 연필 다리 레이어 */
+/* .pencil-leg-wrap {
+  position: absolute;
+  top: 40px;
+  left: 60px;  
+  width: 90px;
+  height: 160px;
+  z-index: 2;  
+  transform-origin: 75px 45px; 
+  pointer-events: none;
+  box-shadow: inset 0 0 20px green;
+} */
+ /* 2. 회전하는 연필 다리 레이어 */
+.pencil-leg-wrap {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  /* width: 90px;
+  height: 160px; */
+  z-index: 2;
+  /* ★ top: 40px, left: 60px 기준으로 연필 다리 상단 조인트 위치(약 15px 5px 등)에 맞게 축 설정 */
+  transform-origin: 15px 5px; 
+  pointer-events: none;
+  box-shadow: inset 0 0 10px green;
+}
+ 
+
+.pencil-leg-wrap .compass-img.pencil {
+  width: 100%;
+  height: 100%;
+}
+
+/* 3. 바늘 고정점 (빨간 점) */
+.needle-point {
+  position: absolute;
+  left: 20px;
+  top: 180px;
+  width: 8px;
+  height: 8px;  
+  background-color: #ef4444;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 4. 반지름 조절 핸들 (우측 연필 다리 끝) */
+.resize-handle {
+  position: absolute;
+  right: 0px;
+  top: 180px;
+  width: 22px;
+  height: 22px;
+  background-color: #3b82f6;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: ew-resize;
+  transform: translate(-50%, -50%); /* 우측 끝 축 맞춤 */
+  z-index: 12;
+}
+
+/* 5. 회전 손잡이 */
+.rotate-handle.rotate.pr {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: 32px;
+  height: 32px;
+  background: #10b981 url(../../common/images/ruler/rotate.png) no-repeat center / 70%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: grab;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+}
+/* 3. 회전 및 원 그리기 핸들 (상단 손잡이) */
+.rotate-handle.rotate.pr {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: 32px;
+  height: 32px;
+  background: #10b981 url(../../common/images/ruler/rotate.png) no-repeat center / 70%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: grab;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+}
+
+/* 1. 버튼이 꺼져 있을 때 (data-pressed="false") : 숨김 처리 */
+.protractor.compass:not([data-pressed="true"]) ~ .compassWrap {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.protractor.compass:not([data-pressed="true"]) ~ .compassSen {
+  opacity: 0 !important;
+}
+
+/* 2. 버튼이 켜졌을 때 (data-pressed="true") : 화면에 노출 및 클릭 허용 */
+.protractor.compass[data-pressed="true"] ~ .compassWrap {
+  display: block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.protractor.compass[data-pressed="true"] ~ .compassWrap .compassBox {
+  pointer-events: auto !important;
+}
+
+.protractor.compass[data-pressed="true"] ~ .compassSen {
+  opacity: 1 !important;
+}
+
+
+
+/* 회전하는 오른쪽 다리 레이어 */
+.pencil-leg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* ★ 상단 원형 힌지 중심점 좌표로 회전축(transform-origin) 지정 */
+  transform-origin: 75px 45px; /* 이미지 크기에 맞춰 x, y px 조정 필요 */
+  pointer-events: none;
+}
+
+
+/* 컴퍼스 다리 수정 */
+.resize-handle::after {
+    content:'';
+    width: 10px;
+    height: 160px;
+    /* width: 90px;
+    height: 160px; */
+    background: #000;
+    position:absolute;
+    bottom:0;
+    left:-11px;
+    z-index: -1;
+    transform:rotate(0deg);
+    /* background: url(../../common/images/ruler/compass_leg.png) no-repeat;
+    background-size: contain; */
+
+}

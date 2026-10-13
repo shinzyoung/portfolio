@@ -1,0 +1,47 @@
+.keypad {
+    z-index: 45;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    position: absolute;   
+    left: 890px;
+    top: 353px;
+    width: 241px;
+    height: 291px;
+    background: url(../../common/images/keypad/Keypad.png) no-repeat;
+    padding: 20px 20px 25px 20px;
+    box-sizing: border-box;
+
+    transform: translateX(390px);
+    transition: transform 0s;
+}
+.keypad.show {
+    transition: transform 0.5s;
+    transform: translateX(0px);
+}
+.keypad.remove {
+    display: none;
+}
+.keypad > .btn {
+    position: static;
+    cursor: pointer;
+    margin-right: 7px;
+    margin-bottom: 8px;
+    width: 60px;
+    height: 55px;
+    border-radius: 30px;
+    -webkit-tap-highlight-color:transparent;
+}
+/* input 입력 제한 */
+.input-con {
+    pointer-events: auto;
+    cursor: default;
+}
+.input-con input:read-only {
+    pointer-events: none;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}

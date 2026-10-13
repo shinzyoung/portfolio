@@ -1,0 +1,59 @@
+@charset "utf-8";
+ body { 
+    margin: 0;
+    padding: 20px; 
+    font-family: "NanumSquareEB", sans-serif;
+    background: #f9f9f9;
+}
+.math-title {
+    margin: 10px 0 15px;
+    font-family: "NanumSquareEB", sans-serif;
+    font-weight: 700;
+    font-size: clamp(16px, 4vw, 20px);
+}
+ .menu-bar { 
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+ }
+ .menu-bar button { 
+    padding: 5px 12px 7px; 
+    border: none; 
+    background: #007bff; 
+    color: white; 
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "NanumSquareB", sans-serif;
+    font-weight: 500;
+    font-size: 15px
+ }
+ .menu-bar button:hover { 
+    background: #0056b3;
+}
+.math-stage {
+   position: relative;
+   width: 100%;
+   max-width: 1280px;
+   max-height: 90vh; 
+   aspect-ratio: 16 / 10; 
+   margin: 0 auto;
+   background: #000;
+   overflow: hidden;
+   border-radius: 8px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+ }    
+
+ .math-scale-wrapper {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 1280px;
+   height: 800px;
+   transform-origin: top left;         
+ }
+ .math-scale-wrapper iframe {
+   width: 100%;
+   height: 100%;
+   border: none;
+ }

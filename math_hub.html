@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학 인터랙티브 허브</title>
+    <link rel="stylesheet" href="./common/reset.css">
+    <link rel="stylesheet" href="./css/math_hub.css">
+</head>
+<body>
+    <h2 class="math-title">초등 수학 인터랙티브 교구 모음</h2>
+    <div class="menu-bar">
+      <button onclick="loadSample('./20261013_sampleList_v2/04_분수식/content.html')">분수식</button>
+      <button onclick="loadSample('./20261013_sampleList_v2/05_연산식(덧셈,곱셈,나눗셈)/content.html')">연산식</button>
+      <button onclick="loadSample('./20261013_sampleList_v2/13_준비물(자)/content.html')">자</button>
+      <button onclick="loadSample('./20261013_sampleList_v2/14_준비물(각도기)/content.html')">각도기</button>
+      <button onclick="loadSample('./20261013_sampleList_v2/12_전개도_case2/content.html')">전개도</button>
+      <button onclick="loadSample('./20261013_sampleList_v2/20_쌓기나무(3d)_정오답처리/content.html')">3D 쌓기나무</button>
+      <button onclick="loadSample('./20261013_sampleList_v2/18_쌓기나무(클릭)/content.html')">쌓기나무(click)</button>
+    </div>
+
+    <!-- 샘플이 실시간으로 로드되는 내부 뷰어 -->    
+    <div class="math-stage">
+        <div class="math-scale-wrapper">
+            <iframe id="mathFrame" src="./20261013_sampleList_v2/20_쌓기나무(3d)_정오답처리/content.html"></iframe>
+        </div>
+    </div>
+
+  <script>
+    function loadSample(url) {
+      document.getElementById('mathFrame').src = url;
+    }
+    function resizeMathViewer() {
+      const stage = document.querySelector('.math-stage');
+      const wrapper = document.querySelector('.math-scale-wrapper');
+      if (!stage || !wrapper) return;
+
+      const currentWidth = stage.clientWidth; // 현재 보여지는 무대의 가로 크기
+      const scale = currentWidth / 1280;     // 원본 기준(1280px) 대비 비율 계산
+
+      wrapper.style.transform = `scale(${scale})`;
+      stage.style.height = `${800 * scale}px`; // 비율에 맞춰 무대 높이도 동적 조절
+    }
+
+    // 창크기가 바뀔 때마다 실행
+    window.addEventListener('resize', resizeMathViewer);
+    // 페이지 처음 열렸을 때 실행
+    window.addEventListener('DOMContentLoaded', resizeMathViewer);
+  </script>
+</body>
+</html>

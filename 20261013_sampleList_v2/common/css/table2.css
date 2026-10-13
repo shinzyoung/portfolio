@@ -1,0 +1,147 @@
+
+/* 테이블 */
+:root {
+  --main-color1: #007ac0;
+  --main-color2: #009041;
+  --main-color3: #d9515c;
+  --main-color4: #009276;
+  --main-color5: #84639d;
+  --main-color6: #da511d;
+
+  --table-0-color: #fdddc0;
+  --table-1-color: #d4e5f6;
+  --table-2-color: #dbefa8;
+  --table-3-color: #fbc5d2;
+  --table-4-color: #d2ebe4;
+  --table-5-color: #dae3f3;
+  --table-6-color: #fff08a;
+
+  --table-b0-color: #fdb674;
+  --table-b1-color: #70b2f5;
+  --table-b2-color: #a9d43a;
+  --table-b3-color: #f57f9a;
+  --table-b4-color: #49bd9c;
+  --table-b5-color: #6298f5;
+  --table-b6-color:  #f4b61c;
+}
+table, caption, tbody, tfoot, tr, th, td {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+  font-weight:normal;
+}
+.tableArea{
+  /* position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  /* z-index: 10; */
+}
+.tableArea > .tableTitle {
+  position: relative;
+  padding: 0 20px;
+  font-size: 33px;    
+  font-family: "NotoSansKR-Medium";
+  /* background: #e0eeff; */
+  border-radius: 50px;
+  margin-bottom: 20px;
+  text-align: center;   
+}
+
+table{margin:0 auto;}
+table * {font-size: 30px;font-family: "NotoSansKR-Medium";font-weight: 400;}
+table tr>th {width: 200px;height: 60px;}
+table tr:nth-child(1)>th:nth-child(2) {width: 200px;}
+table tr>th,
+table tr>td {width: 200px;height: 60px;}
+
+table tr {display: flex;justify-content: center;align-items: center;position: static;}
+
+table tr>* {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 3px solid;
+  border-bottom: 3px solid;
+  box-sizing: border-box;
+}
+table tr:first-child {border-top: 3px solid;}
+table tr > td:first-child,
+table tr > th:first-child {border-left: 3px solid;}
+
+table tr:first-child> :first-child {border-top-left-radius: 18px;}
+table tr:first-child> :last-child {border-top-right-radius: 18px;}
+table tr:last-child> :first-child {border-bottom-left-radius: 20px;}
+table tr:last-child> :last-child {border-bottom-right-radius: 20px;
+}
+table tr:first-child {border-top-left-radius: 20px;}
+table tr:first-child {border-top-right-radius: 20px;}
+table tr:last-child {border-bottom-left-radius: 20px;}
+table tr:last-child {border-bottom-right-radius: 20px;}
+
+table tr>th.slash {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="100%" y2="100%" stroke="white" stroke-width="3"/></svg>');
+}
+
+table tr>th.slash>span {
+  position: absolute;
+  font-size: 70%;
+}
+
+table tr>th.slash>span:first-of-type {
+  left: 10px;
+  bottom: 10px;
+}
+
+table tr>th.slash>span:last-of-type {
+  right: 10px;
+  top: 10px;
+}
+
+table[data-unit="0"] tr>th:not(.bg) {background-color: var(--table-0-color);}
+table[data-unit="0"] tr>*,
+table[data-unit="0"] tr > th:first-child,
+table[data-unit="0"] tr > td:first-child,
+table[data-unit="0"] tr:first-child {border-color:var(--table-b0-color)}
+
+table[data-unit="1"] tr>th:not(.bg) {background-color: var(--table-1-color);}
+table[data-unit="1"] tr>*,
+table[data-unit="1"] tr > th:first-child,
+table[data-unit="1"] tr > td:first-child,
+table[data-unit="1"] tr:first-child {border-color: var(--table-b1-color);}
+
+table[data-unit="2"] tr>th:not(.bg) {background-color: var(--table-2-color);}
+table[data-unit="2"] tr>*,
+table[data-unit="2"] tr > th:first-child,
+table[data-unit="2"] tr > td:first-child,
+table[data-unit="2"] tr:first-child {border-color: var(--table-b2-color);}
+
+table[data-unit="3"] tr>th:not(.bg) {background-color: var(--table-3-color);}
+table[data-unit="3"] tr>*,
+table[data-unit="3"] tr > th:first-child,
+table[data-unit="3"] tr > td:first-child,
+table[data-unit="3"] tr:first-child {border-color: var(--table-b3-color);}
+
+table[data-unit="4"] tr>th:not(.bg) {background-color: var(--table-4-color);}
+table[data-unit="4"] tr>*,
+table[data-unit="4"] tr > th:first-child,
+table[data-unit="4"] tr > td:first-child,
+table[data-unit="4"] tr:first-child {border-color: var(--table-b4-color);}
+
+table[data-unit="5"] tr>th:not(.bg) {background-color: var(--table-5-color);}
+table[data-unit="5"] tr>*,
+table[data-unit="5"] tr > th:first-child,
+table[data-unit="5"] tr > td:first-child,
+table[data-unit="5"] tr:first-child {border-color: var(--table-b5-color);}
+
+table[data-unit="6"] tr>th:not(.bg) {background-color: var(--table-6-color);}
+table[data-unit="6"] tr>*,
+table[data-unit="6"] tr > th:first-child,
+table[data-unit="6"] tr > td:first-child,
+table[data-unit="6"] tr:first-child {border-color: var(--table-b6-color);}

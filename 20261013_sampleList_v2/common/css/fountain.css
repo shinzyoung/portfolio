@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+/*텍스트 관련*/
+strong, em, address, cite, i , b{font-weight:normal;font-style: normal;}
+
+/* 분수 */
+.fountain * {position: relative;line-height: 1;font-family: "NotoSansKR-Medium";}
+.fountain {display: inline-flex;align-items: center;text-align: center;  text-indent: 0;position: relative;margin: 0 4px;vertical-align: 0.62em;}
+.fountain>em {display: inline-block;position: relative;margin-right: 5px;}
+.fountain>span>em {position: relative;}
+.fountain>span>em:first-child{margin-bottom: 4px;}
+.fountain>span>em:last-child{margin-top: 4px;}
+.fountain.great {vertical-align: 0;}
+
+
+.fountain>*:not(em) {  padding: 0px 6px 0;display: inline-flex;flex-direction: column;position: relative;align-items: center;}
+.fountain .bar {width: calc(100% + 2px);height: 0.08em; background-color: #141c24;  position: absolute;  top: 53%;left: 50%;transform: translate(-50%, -50%);}
+
+/* 260429 addLine 추가 */
+.fountain>span>em:first-child > i {top: -34px;}
+.fountain>span>em:last-of-type> i {top: 45px;}
+.addLine.hasI::before {content: '';position: absolute;top: 0;width: 100%;height: 100%;background: linear-gradient(to bottom right,transparent calc(50% - 2px),#EC008B,transparent calc(50% + 0.08em));}
+.addLine > i {color: #EC008B;position: absolute;font-size: 30px !important;left: 50%;transform: translateX(-50%);text-align: center;}
+
+.mini {
+  width: fit-content;
+  display: inline-flex;
+  color: #1757be;
+  align-items: center;
+}
+
+.mini>i {
+  transform: scaleX(1.5) scaleY(2.2);
+  font-family: serif !important;
+  display: inline-block;
+}
+
+.mini>i:first-of-type {
+    margin-right: -10px;
+}
+
+.mini>.fountain {
+  margin-left: 10px;
+}
+.mini>.fountain .bar {
+  background: #1757be;
+}
+
+
+/* ***************************************************** */
+/* 분수 박스 */
+.fountain.boxSt_t {vertical-align: 27px;}
+.fountain.boxSt_t span>em {display: inline-flex;align-items: center;}
+.fountain.boxSt_t span>em:first-child {margin-bottom: 5px;}
+.fountain.boxSt_t span>em:last-child {margin-top: 5px;}
+.fountain.boxSt_t .bar {top: 53%;}
+.fountain.great.boxSt_t {vertical-align: 0;}
+
+.fountain.boxSt_b {vertical-align: 27px;}
+.fountain.boxSt_b span>em {display: inline-flex;align-items: center;}
+.fountain.boxSt_b span>em:first-child {margin-bottom: 5px;}
+.fountain.boxSt_b span>em:last-child {margin-top: 6px;}
+.fountain.boxSt_b .bar {top: 49%;}
+
+.fountain.great.boxSt_b {vertical-align: -3px;}
+.fountain.great.boxSt_b span>em:first-child {margin-bottom: -9px;}
+.fountain.great.boxSt_b span>em:last-child {margin-top: 20px;}
+.fountain.great.boxSt_b .bar {top: 49%;}
+
+.fountain.all>span>em:first-child {display: inline-flex;align-items: center;margin-bottom: 5px;}
+.fountain.all>span>em:last-child {display: inline-flex;align-items: center;margin-bottom: 5px;}
+.fountain.all {vertical-align: 13px;}
+.fountain.all .bar{top: 47%;}
+
+/* ***************************************************** */
+/* 복습퀴즈 지시문 */
+.header .title-con .text p .fountain {margin-top: -11px;vertical-align: 19px;}
+.header .title-con .text p.line_2 .fountain {margin-top: -14px;}
+.header .title-con .text p .fountain *{font-family: "NotoSansKR-Bold";}
+.header .title-con .text p .fountain .bar{background-color:#fff;height: 3.2px;}
+.header .title-con .text p .fountain>span>em:first-child {margin-bottom: 4px;}
+.header .title-con .text p .fountain>span>em:last-child {margin-top: 4px;}
+
+/* 개념활동 지시문*/
+.quiz_text .fountain {margin-top:-8px;}
+.quiz_text .fountain * {font-family: "NotoSansKR-Bold";font-size: 26px;}
+.quiz_text .fountain .bar {height: 3px;}
+
+/* 260513 추가 : 한눈에정리하기 */
+.add_title .text .fountain {}
+.add_title .text .fountain * {font-family: "NotoSansKR-Bold";}
+.add_title .text .fountain .bar {height: 3px;}
+.add_title .text .fountain>span>em:last-child {margin-top: 3px;}
+.add_title .text .fountain>span>em:first-child {margin-bottom: 2px;}

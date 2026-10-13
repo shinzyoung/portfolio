@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'NanumBarunGothicBold';
+    src: url("../font/NANUMBARUNGOTHICBOLD.TTF");    
+}
+@font-face {
+  font-family: "NotoSansKR-Medium";
+  src: url("../font/NotoSans-Medium.woff") format("woff"),
+       url("../font/NotoSansKR-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "NotoSansKR-SemiBold";
+  src: url("../font/NOTOSANSKRSEMIBOLD.TTF");
+}
+
+@font-face {
+  font-family: "NotoSansKR-Bold";
+  src: url("../font/NotoSans-Bold.woff");
+  src: url("../font/NotoSansKR-Bold.ttf");
+}
+ @font-face {
+  font-family: "MD아트체";
+  src: url("../../common/font/ART.woff2") format("woff2"),
+       url("../../common/font/ART.woff") format("woff"),
+       url("../../common/font/ART.ttf") format("truetype");
+}
+
+
+*,
+*::before,
+*::after {box-sizing: border-box;}
+
+/* 색상관련 관련 */
+:root {
+  --main-color1: #007ac0;
+  --main-color2: #009041;
+  --main-color3: #d9515c;
+  --main-color4: #009276;
+  --main-color5: #84639d;
+  --main-color6: #da511d;
+
+  --table-0-color: #fdddc0;
+  --table-1-color: #d4e5f6;
+  --table-2-color: #dbefa8;
+  --table-3-color: #fbc5d2;
+  --table-4-color: #d2ebe4;
+  --table-5-color: #dae3f3;
+  --table-6-color: #fde6db;
+}
+
+/* 공통 약물 관련 */
+sup {
+  font-size: 60% !important;
+  margin: 0 3px 0 2px;
+  font-weight: 700 !important;
+  vertical-align: super;
+  position: relative;
+  top: -2px;
+}
+.deg {
+  position: relative;
+  top: 8px;
+  margin:0 0 0 0;
+  font-size: 40px;
+  font-weight: 700;
+  vertical-align: super;
+}
+.cicleTxt {
+    width: 30px;
+    height: 30px;
+    background: #e3d9cd;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 부등호 기호 */
+.math {font-family: "MD아트체" !important;}
+
+
+/* layout */
+.blind{visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:0;height:0;font-size:0;line-height:0}
+.empty{color:rgba(0, 0, 0, 0);font-size:0}
+.hidden{display:none}
+
+.al{text-align:left }
+.ac{text-align:center }
+.ar{text-align:right }
+.vt{vertical-align:top }
+
+.mt2{margin-top:2px }
+.mt4{margin-top:4px }
+.mt5{margin-top:5px }
+.mt6{margin-top:6px }
+.mt8{margin-top:8px }
+.mt10{margin-top:10px }
+.mt15{margin-top:15px }
+.mt20{margin-top:20px }
+.mt25{margin-top:25px }
+.mt30{margin-top:30px }
+.mt35{margin-top:35px }
+.mt40{margin-top:40px }
+.mt45{margin-top:45px }
+.mt50{margin-top:50px }
+.mt70{margin-top:70px }
+.mt90{margin-top:90px }
+.mt100{margin-top:100px }
+.mt110{margin-top:110px }
+.mt120{margin-top:120px }
+.mt130{margin-top:130px }
+
+.ml2{margin-left:2px }
+.ml4{margin-left:4px }
+.ml5{margin-left:5px }
+.ml8{margin-left:8px }
+.ml10{margin-left:10px }
+.ml15{margin-left:15px }
+.ml20{margin-left:20px }
+.ml25{margin-left:25px }
+.ml30{margin-left:30px }
+.ml35{margin-left:35px }
+.ml40{margin-left:40px }
+.ml45{margin-left:45px }
+.ml50{margin-left:50px }
+.ml70{margin-left:70px }
+.ml90{margin-left:90px }
+.ml100{margin-left:100px }
+.ml110{margin-left:110px }
+.ml120{margin-left:120px }
+.ml130{margin-left:130px }
+
+.brtn{border-top:0 }
+.brrn{border-right:0 }
+.brbn{border-bottom:0 }
+.brln{border-left:0 }
+.mtn{margin-top:0 }
+.mrn{margin-right:0 }
+.mbn{margin-bottom:0 }
+.mln{margin-left:0 }
+
