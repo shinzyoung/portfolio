@@ -1,12 +1,20 @@
 @charset "utf-8";
 
 /* 전체 플레이어 컨테이너 (반응형 및 전체화면 기준점) */
-
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
 .video-container {
   position: relative;
   width: 100vw;
-  height: 56.25vw; /* 16:9 비율 유지 (너비의 56.25%가 높이가 됨) */
-  max-height: 100vh;
+  /* height: 56.25vw; */
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  /* max-height: 100vh; */
   background: #000;
   display: flex;
   flex-direction: column;
